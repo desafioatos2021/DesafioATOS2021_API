@@ -8,4 +8,8 @@
     <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="3.21.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Business\" />
+  </ItemGroup>
+
 </Project>

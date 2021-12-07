@@ -10,7 +10,7 @@ using Oracle.EntityFrameworkCore.Metadata;
 namespace BaseAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20211202174122_First")]
+    [Migration("20211207215630_First")]
     partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

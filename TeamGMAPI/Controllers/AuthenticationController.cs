@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
@@ -13,7 +11,6 @@ using TeamGM.DOMAIN.Interfaces.Helpers;
 using TeamGM.DOMAIN.ViewModels;
 using TeamGMAPI.Extensions;
 using System.Security.Claims;
-using DevIO.Api.Extensions;
 using Base.DOMAIN.ViewModels.User;
 using Base.BUSINESS.Interfaces;
 

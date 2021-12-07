@@ -75,8 +75,6 @@ namespace TeamGMAPI.Controllers
         {
             _notificador.Handle(new Notificacao(mensagem));
         }
-        //validação de modelstate
-
-        //validação da operação de negócios
+        
     }
 }

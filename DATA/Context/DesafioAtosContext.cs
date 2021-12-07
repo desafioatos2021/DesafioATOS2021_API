@@ -11,7 +11,9 @@ namespace TeamGM.DATA.Context
         public DesafioAtosContext(DbContextOptions<DesafioAtosContext> options) : base(options) { }
 
         public DbSet<Produto> Produto { get; set; }
+        public DbSet<ItemVenda> ItemVenda { get; set; }
         public DbSet<Venda> Venda { get; set; }
+        public DbSet<Cliente> Cliente { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
