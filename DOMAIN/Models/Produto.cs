@@ -17,6 +17,6 @@ namespace Base.DOMAIN.Models
         public byte[] FotoProduto { get; set; }
         public CategoriaProduto CategoriaProduto { get; set; }
 
-        public virtual ICollection<VendaProduto> VendaProduto { get; set; }
+        public virtual ICollection<ItemVenda> VendaProduto { get; set; }
     }
 }
