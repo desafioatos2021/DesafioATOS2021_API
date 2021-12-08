@@ -13,9 +13,16 @@ namespace Base.DATA.Repository
     {
         private readonly DesafioAtosContext _context;
 
-        public bool AdicionarCliente(Cliente cliente)
+        public ClienteRepository(DesafioAtosContext context)
         {
-            
+            _context = context;
+        }
+
+        public Cliente AdicionarCliente(Cliente cliente)
+        {
+            _context.Cliente.Add(cliente);
+            _context.SaveChanges();
+            return cliente;
         }
     }
 }

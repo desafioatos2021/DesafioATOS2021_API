@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Base.DATA.Interfaces
+namespace Base.BUSINESS.Interfaces
 {
-    public interface IClienteRepository
+    public interface IClienteBusiness
     {
         Cliente AdicionarCliente(Cliente cliente);
     }

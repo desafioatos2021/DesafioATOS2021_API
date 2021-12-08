@@ -10,8 +10,6 @@ namespace Base.DATA.Maps
         {
             builder.HasKey(c => c.Id);
             builder.ToTable(nameof(ItemVenda));
-
-
         }
     }
 }

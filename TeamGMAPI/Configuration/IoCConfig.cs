@@ -1,4 +1,7 @@
-﻿using Base.BUSINESS.Interfaces;
+﻿using Base.BUSINESS.Business;
+using Base.BUSINESS.Interfaces;
+using Base.DATA.Interfaces;
+using Base.DATA.Repository;
 using BaseAPI.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +22,7 @@ namespace TeamGMAPI.Configuration
         {
             services.AddRepositoryService();
             services.AddHelpersService();
+            services.AddBusinessService();
 
             return services;
         }
@@ -27,6 +31,7 @@ namespace TeamGMAPI.Configuration
         private static IServiceCollection AddRepositoryService(this IServiceCollection service)
         {
             service.AddScoped<IDapperUnitOfWork, DapperUnitOfWork>();
+            service.AddScoped<IClienteRepository, ClienteRepository>();
             service.AddScoped<DbSession>();
 
             return service;
@@ -38,6 +43,13 @@ namespace TeamGMAPI.Configuration
 
             service.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             service.AddScoped<IUser, AspNetUser>();
+
+            return service;
+        }
+
+        private static IServiceCollection AddBusinessService(this IServiceCollection service)
+        {
+            service.AddScoped<IClienteBusiness, ClienteBusiness>();
 
             return service;
         }
