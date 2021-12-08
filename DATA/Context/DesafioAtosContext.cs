@@ -20,6 +20,7 @@ namespace TeamGM.DATA.Context
             modelBuilder.ApplyConfiguration(new ProdutoMap());
             modelBuilder.ApplyConfiguration(new VendaMap());
             modelBuilder.ApplyConfiguration(new ItemVendaMap());
+            modelBuilder.ApplyConfiguration(new ClienteMap());
             
 
         }
