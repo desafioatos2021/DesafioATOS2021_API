@@ -4,17 +4,16 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Base.DATA.Maps
 {
-   public class ClienteMap : IEntityTypeConfiguration<Cliente>
+    public class ClienteMap : IEntityTypeConfiguration<Cliente>
     {
         public void Configure(EntityTypeBuilder<Cliente> builder)
-        {
-            builder.ToTable(nameof(Cliente));
-
-            // TODO: Ver implementação com Oracle
+        {            
             builder.Property<int>("IdCliente")
                 .ValueGeneratedOnAdd()
                 .HasColumnType("int");
-                //.HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            // TODO: Confirmar autoindentuty para Oracle
+            OraclePropertyBuilderExtensions.UseIdentityColumn(builder.Property<int>("IdCliente"), 1, 1);
 
             builder.Property<string>("Nome")
                 .IsRequired()
@@ -23,6 +22,7 @@ namespace Base.DATA.Maps
             builder.HasKey(c => c.IdCliente);
 
             builder.HasMany(c => c.Vendas);
+            builder.ToTable(nameof(Cliente));
         }
     }
 }

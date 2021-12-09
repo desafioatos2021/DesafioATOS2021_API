@@ -9,11 +9,11 @@ namespace Base.DATA.Interfaces
 {
     public interface IClienteRepository
     {
-        Cliente AdicionarCliente(Cliente cliente);
-        Cliente ExibeClientes();
-        Cliente PesquisarClientePorId(int id);
-        Cliente PequisarClientePorNome(string nome);
-        Cliente AtualizarCliente(Cliente cliente);
-        Cliente RemoveRCliente(Cliente cliente);
+        Task<Cliente> InsertClienteAsync(Cliente cliente);
+        Task<IEnumerable<Cliente>> GetClientesAsync();
+        Task<Cliente> GetClienteIdAsync(int id);
+        Task<Cliente> GetClienteNomeAsync(string nome);
+        Task<Cliente> UpdateClienteAsync(Cliente cliente);
+        Task<Cliente> DeleteClienteAsync(Cliente cliente);
     }
 }
