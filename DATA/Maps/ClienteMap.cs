@@ -8,8 +8,20 @@ namespace Base.DATA.Maps
     {
         public void Configure(EntityTypeBuilder<Cliente> builder)
         {
-            builder.HasKey(c => c.IdCliente);
             builder.ToTable(nameof(Cliente));
+
+            // TODO: Ver implementação com Oracle
+            builder.Property<int>("IdCliente")
+                .ValueGeneratedOnAdd()
+                .HasColumnType("int");
+                //.HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            builder.Property<string>("Nome")
+                .IsRequired()
+                .HasColumnType("varchar(50)");
+
+            builder.HasKey(c => c.IdCliente);
+
             builder.HasMany(c => c.Vendas);
         }
     }

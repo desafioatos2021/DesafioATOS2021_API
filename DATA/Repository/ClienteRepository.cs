@@ -24,5 +24,30 @@ namespace Base.DATA.Repository
             _context.SaveChanges();
             return cliente;
         }
+
+        public Cliente AtualizarCliente(Cliente cliente)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Cliente ExibeClientes()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Cliente PequisarClientePorNome(string nome)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Cliente PesquisarClientePorId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Cliente RemoveRCliente(Cliente cliente)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

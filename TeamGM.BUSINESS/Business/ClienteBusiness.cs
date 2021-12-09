@@ -10,9 +10,7 @@ namespace Base.BUSINESS.Business
     {
 
         private readonly IClienteRepository _clienteRepository;
-        
-        
-
+                
         public ClienteBusiness(IClienteRepository clienteRepository)
         {
             _clienteRepository = clienteRepository;
@@ -22,7 +20,6 @@ namespace Base.BUSINESS.Business
         {
             var clienteRetorno = _clienteRepository.AdicionarCliente(cliente);
             return clienteRetorno;
-            
         }
 
         
