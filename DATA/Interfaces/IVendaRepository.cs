@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Base.DATA.Interfaces {
-    internal interface IVendaRepository 
+    public interface IVendaRepository 
     {
         Task<Venda> InsertVendaAsync(Venda venda);
         Task<IEnumerable<Venda>> GetTodasAsVendasAsync();

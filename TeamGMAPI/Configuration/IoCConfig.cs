@@ -32,6 +32,7 @@ namespace TeamGMAPI.Configuration
         {
             service.AddScoped<IDapperUnitOfWork, DapperUnitOfWork>();
             service.AddScoped<IClienteRepository, ClienteRepository>();
+            service.AddScoped<IVendaRepository, VendaRepository>();
             service.AddScoped<DbSession>();
 
             return service;
