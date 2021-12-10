@@ -17,35 +17,33 @@ namespace Base.DATA.Repository
         {
             _context = context;
         }
-
-        public Cliente AdicionarCliente(Cliente cliente)
+        public async Task<Cliente> InsertClienteAsync(Cliente cliente)
         {
-            _context.Cliente.Add(cliente);
-            _context.SaveChanges();
+            await _context.Cliente.AddAsync(cliente);
+            await _context.SaveChangesAsync();
             return cliente;
         }
-
-        public Cliente AtualizarCliente(Cliente cliente)
+        public Task<Cliente> DeleteClienteAsync(Cliente cliente)
         {
             throw new NotImplementedException();
         }
 
-        public Cliente ExibeClientes()
+        public Task<Cliente> GetClienteIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Cliente PequisarClientePorNome(string nome)
+        public Task<Cliente> GetClienteNomeAsync(string nome)
         {
             throw new NotImplementedException();
         }
 
-        public Cliente PesquisarClientePorId(int id)
+        public Task<IEnumerable<Cliente>> GetClientesAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Cliente RemoveRCliente(Cliente cliente)
+        public Task<Cliente> UpdateClienteAsync(Cliente cliente)
         {
             throw new NotImplementedException();
         }
