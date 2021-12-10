@@ -9,6 +9,6 @@ namespace Base.BUSINESS.Interfaces
 {
     public interface IClienteBusiness
     {
-        Cliente AdicionarCliente(Cliente cliente);
+        Task<Cliente> AdicionarCliente(Cliente cliente);
     }
 }

@@ -2,7 +2,7 @@
 using Base.DATA.Interfaces;
 using Base.DOMAIN.Models;
 using System;
-
+using System.Threading.Tasks;
 
 namespace Base.BUSINESS.Business
 {
@@ -16,9 +16,9 @@ namespace Base.BUSINESS.Business
             _clienteRepository = clienteRepository;
         }
 
-        public Cliente AdicionarCliente(Cliente cliente)
+        public Task<Cliente> AdicionarCliente(Cliente cliente)
         {
-            var clienteRetorno = _clienteRepository.AdicionarCliente(cliente);
+            var clienteRetorno = _clienteRepository.InsertClienteAsync(cliente);
             return clienteRetorno;
         }
 
