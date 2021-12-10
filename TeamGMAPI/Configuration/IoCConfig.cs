@@ -51,6 +51,7 @@ namespace TeamGMAPI.Configuration
         private static IServiceCollection AddBusinessService(this IServiceCollection service)
         {
             service.AddScoped<IClienteBusiness, ClienteBusiness>();
+            service.AddScoped<IVendaBusiness, VendaBusiness> ();
 
             return service;
         }
