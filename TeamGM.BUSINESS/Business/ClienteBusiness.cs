@@ -22,6 +22,10 @@ namespace Base.BUSINESS.Business
             return clienteRetorno;
         }
 
-        
+        public Task<Cliente> ExcluirCliente(int id)
+        {
+            var clienteExcluido = _clienteRepository.DeleteClienteAsync(id);
+            return clienteExcluido;
+        }
     }
 }
