@@ -13,6 +13,7 @@ namespace Base.DATA.Interfaces {
         Task<Venda> GetVendaIdAsync(int id);
         Task<Venda> GetVendaPedidoAsync(string pedido);
         Task<Venda> UpdateVendaAsync(Venda venda);
+        Task<Venda> UpdateVendaAsync(int id);
         Task<Venda> DeleteVendaAsync(Venda venda);
         Task<Venda> DeleteVendaIdAsync(int id);
         Task<Venda> DeleteVendaPedidoAsync(string pedido);

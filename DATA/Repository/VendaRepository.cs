@@ -19,8 +19,15 @@ namespace Base.DATA.Repository
             _context = context;
         }
 
-        public Task<Venda> DeleteVendaAsync(Venda venda) {
-            throw new NotImplementedException();
+        public async Task<Venda> DeleteVendaAsync(Venda venda) {
+            var vendaConsultada = await _context.Venda.FindAsync(venda.IdVenda);
+            if (vendaConsultada == null)
+            {
+                return null;
+            }
+            var vendaRemovida = _context.Venda.Remove(vendaConsultada);
+            await _context.SaveChangesAsync();
+            return vendaRemovida.Entity;
         }
 
         public async Task<Venda> DeleteVendaIdAsync(int id) {
@@ -34,20 +41,51 @@ namespace Base.DATA.Repository
             return vendaRemovida.Entity;
         }
 
-        public Task<Venda> DeleteVendaPedidoAsync(string pedido) {
-            throw new NotImplementedException();
+        public async Task<Venda> DeleteVendaPedidoAsync(string pedido) {
+            var vendaConsultada = _context.Venda.Where(np => np.numeroPedido == pedido).FirstOrDefault();
+            if (vendaConsultada == null)
+            {
+                return null;
+            }
+            var vendaRemovida = _context.Venda.Remove(vendaConsultada);
+            await _context.SaveChangesAsync();
+            return vendaRemovida.Entity;
         }
 
-        public Task<IEnumerable<Venda>> GetTodasAsVendasAsync() {
-            throw new NotImplementedException();
+        public async Task<IEnumerable<Venda>> GetTodasAsVendasAsync() {
+            var vendasConsultadas = _context.Venda.AsEnumerable();
+            if (vendasConsultadas == null)
+            {
+                return null;
+            }
+            await _context.SaveChangesAsync();
+            return vendasConsultadas.AsEnumerable();
         }
 
-        public Task<Venda> GetVendaIdAsync(int id) {
-            throw new NotImplementedException();
+        public async Task<Venda> GetVendaIdAsync(int id) {
+            var vendaConsultada = _context.Venda.FirstOrDefault(v => v.IdVenda == id);
+            if (vendaConsultada == null)
+            {
+                return null;
+            }
+            else
+            {
+                await _context.SaveChangesAsync();
+                return vendaConsultada;
+            }
         }
 
-        public Task<Venda> GetVendaPedidoAsync(string pedido) {
-            throw new NotImplementedException();
+        public async Task<Venda> GetVendaPedidoAsync(string pedido) {
+            var vendaConsultada = _context.Venda.FirstOrDefault(v => v.numeroPedido == pedido);
+            if (vendaConsultada == null)
+            {
+                return null;
+            }
+            else
+            {
+                await _context.SaveChangesAsync();
+                return vendaConsultada;
+            }
         }
 
         public async Task<Venda> InsertVendaAsync(Venda venda) {
@@ -56,8 +94,35 @@ namespace Base.DATA.Repository
             return venda;
         }
 
-        public Task<Venda> UpdateVendaAsync(Venda venda) {
-            throw new NotImplementedException();
+        public async Task<Venda> UpdateVendaAsync(Venda venda) {
+            var vendaAtualizada = _context.Venda.FirstOrDefault(v => v.IdVenda == venda.IdVenda);
+
+            if (vendaAtualizada == null)
+            {
+                return null;
+            }
+            else
+            {
+                _context.Update(venda);
+                await _context.SaveChangesAsync();
+                return venda;
+            }
+        }
+
+        public async Task<Venda> UpdateVendaAsync(int id)
+        {
+            var vendaAtualizada = _context.Venda.FirstOrDefault(v => v.IdVenda == id);
+
+            if (vendaAtualizada == null)
+            {
+                return null;
+            }
+            else
+            {
+                _context.Update(vendaAtualizada);
+                await _context.SaveChangesAsync();
+                return vendaAtualizada;
+            }
         }
     }
 }
