@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Base.BUSINESS.Interfaces;
+using Base.DOMAIN.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using TeamGMAPI.Controllers;
 
 namespace BaseAPI.Controllers
 {
@@ -7,9 +11,24 @@ namespace BaseAPI.Controllers
     [Route("[controller]")]
     public class ClientesController : Controller
     {
-        public IActionResult Index()
+        private readonly IClienteBusiness _clienteBusiness;
+
+        public ClientesController(IClienteBusiness clienteBusiness)
         {
-            return View();
+            _clienteBusiness = clienteBusiness;
+        }
+
+        [HttpPost]
+        [Route("InsereCliente")]
+        public async Task<IActionResult> InsereCliente(Cliente cliente)
+        {
+            if(!ModelState.IsValid)
+                return BadRequest();
+            else
+            {
+                var clienteSalvo = await _clienteBusiness.AdicionarCliente(cliente);
+                return Ok(clienteSalvo);
+            }
         }
     }
 }
