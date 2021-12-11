@@ -22,6 +22,11 @@ namespace Base.BUSINESS.Business
             return clienteRetorno;
         }
 
-        
+        public Task<Cliente> ListarClientes()
+        {
+            dynamic clientes = _clienteRepository.GetClientesAsync();
+            return clientes;
+        }
+
     }
 }

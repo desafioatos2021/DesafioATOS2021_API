@@ -30,5 +30,13 @@ namespace BaseAPI.Controllers
                 return Ok(clienteSalvo);
             }
         }
+
+        [HttpPost]
+        [Route("GetClientes")]
+        public async Task<IActionResult> GetClientes([FromServices] IClienteBusiness clienteBusiness)
+        {
+            var clientes = await clienteBusiness.ListarClientes();
+            return Ok(clientes);
+        }
     }
 }
