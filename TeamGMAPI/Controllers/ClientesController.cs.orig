@@ -8,14 +8,15 @@ using TeamGMAPI.Controllers;
 namespace BaseAPI.Controllers
 {
 
-    
+    [ApiController]
+    [Route("[controller]")]
     public class ClientesController : MainController
     {
-        private readonly IClienteBusiness _clienteBusiness;
-
-        public ClientesController(INotificador notificador, IUser user, IClienteBusiness clienteBusiness) : base(notificador, user)
+        //private readonly IClienteBusiness _clienteBusiness;
+       
+        public ClientesController(INotificador notificador, IUser user) : base(notificador, user)
         {
-            _clienteBusiness = clienteBusiness;
+        //    _clienteBusiness = clienteBusiness;
         }
 
 
@@ -36,8 +37,9 @@ namespace BaseAPI.Controllers
         /// Exclui um cliente.
         /// </summary>
         /// <param name="id" example="123">Id do cliente</param>
-        [HttpDelete]
-        [Route("ExcluirCliente/{id}")]
+        /// <remarks>Ao excluir um cliente o mesmo será removido permanentemente da base.</remarks>
+        [HttpDelete("{id}")]
+        [Route("ExcluirCliente")]
         public async Task<IActionResult> ExcluiCliente(int id)
         {
             var clienteExcluido = await _clienteBusiness.ExcluirCliente(id);

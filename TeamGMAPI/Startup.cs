@@ -15,6 +15,8 @@ using System.Threading.Tasks;
 using TeamGM.DATA.Context;
 using TeamGMAPI.Configuration;
 using BaseAPI.Data;
+using System.Reflection;
+using System.IO;
 
 namespace TeamGMAPI
 {
@@ -30,6 +32,10 @@ namespace TeamGMAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+            
+
             services.AddIdentityConfiguration(Configuration);
             services.AddTeamGmService();
             services.AddControllers();
@@ -39,7 +45,8 @@ namespace TeamGMAPI
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TeamGMAPI", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Desafio Atos 2021", Version = "v1" });
+                c.IncludeXmlComments(xmlPath, true);
             });
 
             services.Configure<ApiBehaviorOptions>(options =>
