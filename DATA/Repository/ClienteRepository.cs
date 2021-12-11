@@ -45,9 +45,10 @@ namespace Base.DATA.Repository
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Cliente>> GetClientesAsync()
+        public async Task<IEnumerable<Cliente>> GetClientesAsync()
         {
-            throw new NotImplementedException();
+            var clientes = _context.Cliente.ToList();
+            return clientes;
         }
 
         public async Task<Cliente> UpdateClienteAsync(Cliente cliente)

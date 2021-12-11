@@ -24,12 +24,18 @@ namespace Base.BUSINESS.Business
 
         public Task<Cliente> ExcluirCliente(int id)
         {
-            var clienteExcluido = _clienteRepository.DeleteClienteAsync(id);
-            return clienteExcluido;
+            throw new NotImplementedException();
         }
-        
-        public async Task<Cliente> UpdateCliente(Cliente cliente) =>
-            await _clienteRepository.UpdateClienteAsync(cliente);
-        
+
+        public Task<Cliente> ListarClientes()
+        {
+            dynamic clientes = _clienteRepository.GetClientesAsync();
+            return clientes;
+        }
+
+        public Task<Cliente> UpdateCliente(Cliente cliente)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
