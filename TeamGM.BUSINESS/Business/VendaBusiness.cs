@@ -23,5 +23,14 @@ namespace Base.BUSINESS.Business
             var vendaRetorno = _vendaRepository.InsertVendaAsync(venda);
             return vendaRetorno;
         }
+
+        public async Task<Venda> AtualizarVenda(Venda venda) =>
+            await _vendaRepository.UpdateVendaAsync(venda);
+
+        public Task<Venda> ExcluirVenda(int id)
+        {
+            var vendaExcluida = _vendaRepository.DeleteVendaIdAsync(id);
+            return vendaExcluida;
+        }
     }
 }

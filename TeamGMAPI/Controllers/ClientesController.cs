@@ -38,8 +38,8 @@ namespace BaseAPI.Controllers
         /// </summary>
         /// <param name="id" example="123">Id do cliente</param>
         /// <remarks>Ao excluir um cliente o mesmo será removido permanentemente da base.</remarks>
-        [HttpDelete("{id}")]
-        [Route("ExcluirCliente")]
+        [HttpDelete]
+        [Route("ExcluirCliente/{id}")]
         public async Task<IActionResult> ExcluiCliente(int id)
         {
             var clienteExcluido = await _clienteBusiness.ExcluirCliente(id);

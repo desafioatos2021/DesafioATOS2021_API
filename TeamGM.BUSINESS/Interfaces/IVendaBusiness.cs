@@ -10,5 +10,7 @@ namespace Base.BUSINESS.Interfaces
     public interface IVendaBusiness 
     {
         Task<Venda> AdicionarVenda(Venda venda);
+        Task<Venda> ExcluirVenda(int id);
+        Task<Venda> AtualizarVenda(Venda venda);
     }
 }
