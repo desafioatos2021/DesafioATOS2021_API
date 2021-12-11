@@ -13,7 +13,7 @@ namespace Base.DOMAIN.Models
         [StringLength(50, ErrorMessage = "O campo {0} esta em formato inválido")]
         public string Nome { get; set; }
 
-        public Endereco Endereco { get; set; }
+        public int IdEndereco { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<Venda> Vendas { get; set; }
