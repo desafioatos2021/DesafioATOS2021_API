@@ -23,8 +23,15 @@ namespace Base.DATA.Repository
             throw new NotImplementedException();
         }
 
-        public Task<Venda> DeleteVendaIdAsync(int id) {
-            throw new NotImplementedException();
+        public async Task<Venda> DeleteVendaIdAsync(int id) {
+            var vendaConsultada = await _context.Venda.FindAsync(id);
+            if (vendaConsultada == null)
+            {
+                return null;
+            }
+            var vendaRemovida = _context.Venda.Remove(vendaConsultada);
+            await _context.SaveChangesAsync();
+            return vendaRemovida.Entity;
         }
 
         public Task<Venda> DeleteVendaPedidoAsync(string pedido) {

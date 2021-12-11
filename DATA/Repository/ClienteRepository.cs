@@ -23,9 +23,16 @@ namespace Base.DATA.Repository
             await _context.SaveChangesAsync();
             return cliente;
         }
-        public Task<Cliente> DeleteClienteAsync(Cliente cliente)
+        public async Task<Cliente> DeleteClienteAsync(int id)
         {
-            throw new NotImplementedException();
+            var clienteConsultado = await _context.Cliente.FindAsync(id);
+            if (clienteConsultado == null)
+            {
+                return null;
+            }
+            var clienteRemovido = _context.Cliente.Remove(clienteConsultado);
+            await _context.SaveChangesAsync();
+            return clienteRemovido.Entity;
         }
 
         public Task<Cliente> GetClienteIdAsync(int id)
@@ -44,9 +51,18 @@ namespace Base.DATA.Repository
             return clientes;
         }
 
-        public Task<Cliente> UpdateClienteAsync(Cliente cliente)
+        public async Task<Cliente> UpdateClienteAsync(Cliente cliente)
         {
-            throw new NotImplementedException();
+            var clienteAtualizado = _context.Cliente.FirstOrDefault(c => c.IdCliente == cliente.IdCliente);
+            
+            if (clienteAtualizado == null)
+                return null;
+            else
+            {
+                _context.Update(clienteAtualizado);
+                await _context.SaveChangesAsync();
+                return clienteAtualizado;
+            }
         }
     }
 }
