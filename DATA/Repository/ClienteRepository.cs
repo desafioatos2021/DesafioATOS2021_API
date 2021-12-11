@@ -23,9 +23,16 @@ namespace Base.DATA.Repository
             await _context.SaveChangesAsync();
             return cliente;
         }
-        public Task<Cliente> DeleteClienteAsync(Cliente cliente)
+        public async Task<Cliente> DeleteClienteAsync(int id)
         {
-            throw new NotImplementedException();
+            var clienteConsultado = await _context.Cliente.FindAsync(id);
+            if (clienteConsultado == null)
+            {
+                return null;
+            }
+            var clienteRemovido = _context.Cliente.Remove(clienteConsultado);
+            await _context.SaveChangesAsync();
+            return clienteRemovido.Entity;
         }
 
         public Task<Cliente> GetClienteIdAsync(int id)

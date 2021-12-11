@@ -11,6 +11,7 @@ namespace Base.BUSINESS.Interfaces
     {
         Task<Cliente> AdicionarCliente(Cliente cliente);
 
+        Task<Cliente> ExcluirCliente(int id);
         Task<Cliente> UpdateCliente(Cliente cliente);
     }
 }

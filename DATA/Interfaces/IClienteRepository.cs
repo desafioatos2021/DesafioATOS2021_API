@@ -12,6 +12,6 @@ namespace Base.DATA.Interfaces
         Task<Cliente> GetClienteIdAsync(int id);
         Task<Cliente> GetClienteNomeAsync(string nome);
         Task<Cliente> UpdateClienteAsync(Cliente cliente);
-        Task<Cliente> DeleteClienteAsync(Cliente cliente);
+        Task<Cliente> DeleteClienteAsync(int id);
     }
 }

@@ -12,10 +12,11 @@ namespace BaseAPI.Controllers
     [Route("[controller]")]
     public class ClientesController : MainController
     {
+        //private readonly IClienteBusiness _clienteBusiness;
        
         public ClientesController(INotificador notificador, IUser user) : base(notificador, user)
         {
-
+        //    _clienteBusiness = clienteBusiness;
         }
 
 
@@ -30,6 +31,23 @@ namespace BaseAPI.Controllers
                 var clienteSalvo = await clienteBusiness.AdicionarCliente(cliente);
                 return Ok(clienteSalvo);
             }
+        }
+
+        /// <summary>
+        /// Exclui um cliente.
+        /// </summary>
+        /// <param name="id" example="123">Id do cliente</param>
+        /// <remarks>Ao excluir um cliente o mesmo será removido permanentemente da base.</remarks>
+        [HttpDelete("{id}")]
+        [Route("ExcluirCliente")]
+        public async Task<IActionResult> ExcluiCliente(int id)
+        {
+            var clienteExcluido = await _clienteBusiness.ExcluirCliente(id);
+            if (clienteExcluido == null)
+            {
+                return NotFound();
+            }
+            return NoContent();
         }
 
 
