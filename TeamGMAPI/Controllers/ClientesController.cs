@@ -11,22 +11,22 @@ namespace BaseAPI.Controllers
     [Route("[controller]")]
     public class ClientesController : Controller
     {
-        private readonly IClienteBusiness _clienteBusiness;
+        //private readonly IClienteBusiness _clienteBusiness;
 
-        public ClientesController(IClienteBusiness clienteBusiness)
-        {
-            _clienteBusiness = clienteBusiness;
-        }
+        //public ClientesController(IClienteBusiness clienteBusiness)
+        //{
+        //    _clienteBusiness = clienteBusiness;
+        //}
 
         [HttpPost]
         [Route("InsereCliente")]
-        public async Task<IActionResult> InsereCliente(Cliente cliente)
+        public async Task<IActionResult> InsereCliente(Cliente cliente,  [FromServices] IClienteBusiness clienteBusiness)
         {
             if(!ModelState.IsValid)
                 return BadRequest();
             else
             {
-                var clienteSalvo = await _clienteBusiness.AdicionarCliente(cliente);
+                var clienteSalvo = await clienteBusiness.AdicionarCliente(cliente);
                 return Ok(clienteSalvo);
             }
         }
