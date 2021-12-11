@@ -2,6 +2,7 @@
 using Base.DOMAIN.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using TeamGM.DOMAIN.Interfaces.Helpers;
 using TeamGMAPI.Controllers;
 
 namespace BaseAPI.Controllers
@@ -9,14 +10,14 @@ namespace BaseAPI.Controllers
 
     [ApiController]
     [Route("[controller]")]
-    public class ClientesController : Controller
+    public class ClientesController : MainController
     {
-        //private readonly IClienteBusiness _clienteBusiness;
+       
+        public ClientesController(INotificador notificador, IUser user) : base(notificador, user)
+        {
 
-        //public ClientesController(IClienteBusiness clienteBusiness)
-        //{
-        //    _clienteBusiness = clienteBusiness;
-        //}
+        }
+
 
         [HttpPost]
         [Route("InsereCliente")]
@@ -30,5 +31,20 @@ namespace BaseAPI.Controllers
                 return Ok(clienteSalvo);
             }
         }
+
+
+        [HttpPost]
+        [Route("UpdateCliente")]
+        public async Task<IActionResult> UpdateCliente(Cliente cliente, [FromServices] IClienteBusiness clienteBusiness)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            else
+            {
+                var clienteSalvo = await clienteBusiness.UpdateCliente(cliente);
+                return CustomResponse(ModelState);
+            }
+        }
+
     }
 }

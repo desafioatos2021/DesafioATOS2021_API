@@ -43,9 +43,18 @@ namespace Base.DATA.Repository
             throw new NotImplementedException();
         }
 
-        public Task<Cliente> UpdateClienteAsync(Cliente cliente)
+        public async Task<Cliente> UpdateClienteAsync(Cliente cliente)
         {
-            throw new NotImplementedException();
+            var clienteAtualizado = _context.Cliente.FirstOrDefault(c => c.IdCliente == cliente.IdCliente);
+            
+            if (clienteAtualizado == null)
+                return null;
+            else
+            {
+                _context.Update(clienteAtualizado);
+                await _context.SaveChangesAsync();
+                return clienteAtualizado;
+            }
         }
     }
 }

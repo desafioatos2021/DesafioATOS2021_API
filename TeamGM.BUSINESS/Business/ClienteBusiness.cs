@@ -22,6 +22,8 @@ namespace Base.BUSINESS.Business
             return clienteRetorno;
         }
 
+        public async Task<Cliente> UpdateCliente(Cliente cliente) =>
+            await _clienteRepository.UpdateClienteAsync(cliente);
         
     }
 }
