@@ -39,7 +39,7 @@ namespace TeamGMAPI.Controllers
         {
 
             if (!ModelState.IsValid)
-                return CustomResponse(registerUser);
+                return CustomResponse(ModelState);
 
             var user = new IdentityUser
             {

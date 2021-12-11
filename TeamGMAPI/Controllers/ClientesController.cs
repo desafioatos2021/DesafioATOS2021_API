@@ -12,11 +12,11 @@ namespace BaseAPI.Controllers
     [Route("[controller]")]
     public class ClientesController : MainController
     {
-        //private readonly IClienteBusiness _clienteBusiness;
-       
-        public ClientesController(INotificador notificador, IUser user) : base(notificador, user)
+        private readonly IClienteBusiness _clienteBusiness;
+
+        public ClientesController(INotificador notificador, IUser user, IClienteBusiness clienteBusiness) : base(notificador, user)
         {
-        //    _clienteBusiness = clienteBusiness;
+            _clienteBusiness = clienteBusiness;
         }
 
 
