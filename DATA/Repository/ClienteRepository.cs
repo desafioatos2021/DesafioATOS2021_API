@@ -47,7 +47,7 @@ namespace Base.DATA.Repository
 
         public async Task<IEnumerable<Cliente>> GetClientesAsync()
         {
-            var clientes = await _context.Cliente.ToList();
+            var clientes = _context.Cliente.ToList();
             return clientes;
         }
 

@@ -22,11 +22,20 @@ namespace Base.BUSINESS.Business
             return clienteRetorno;
         }
 
+        public Task<Cliente> ExcluirCliente(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<Cliente> ListarClientes()
         {
             dynamic clientes = _clienteRepository.GetClientesAsync();
             return clientes;
         }
 
+        public Task<Cliente> UpdateCliente(Cliente cliente)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
