@@ -1,7 +1,6 @@
 # Desafio Acelera Atos - Gama Academy (C#)
 
-Este projeto tem por finalidade demonstrar os conhecimentos adquiridos durante o programa Acelera Atos juntamente com a Ga
-ma Academy
+Este projeto tem por finalidade demonstrar os conhecimentos adquiridos durante o programa Acelera Atos by Gama Academy
 
 ## Tecnologias Utlizadas
 
