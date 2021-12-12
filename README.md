@@ -13,6 +13,6 @@ Este projeto tem por finalidade demonstrar os conhecimentos adquiridos durante o
 
 - Deyvison J Paula
 - Leonardo A Rocha
-- Tácito
+- Tácito Batista
 - Thiago Q Morcaty
-- Vitor
+- Vitor Martins
