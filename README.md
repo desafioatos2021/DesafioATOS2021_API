@@ -4,7 +4,8 @@ Este projeto tem por finalidade demonstrar os conhecimentos adquiridos durante o
 
 ## Tecnologias Utlizadas
 
-- .NET
+- .NET 6
+- C#
 - Oracle como banco de dados
 - Swagger
 - Entity Framework
@@ -15,4 +16,4 @@ Este projeto tem por finalidade demonstrar os conhecimentos adquiridos durante o
 - Leonardo A Rocha
 - Tácito Batista
 - Thiago Q Morcaty
-- Vitor Martins
+- <a href="https://github.com/vitormartins1">Vitor Martins </a>
