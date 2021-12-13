@@ -37,7 +37,8 @@ namespace BaseAPI.Controllers
         /// </summary>
         /// <param name="id" example="123">Id do cliente</param>
         [HttpDelete]
-        [Route("ExcluirCliente/{id}")]
+        [HttpDelete("{id}")]
+        [Route("ExcluirCliente")]
         public async Task<IActionResult> ExcluiCliente(int id)
         {
             var clienteExcluido = await _clienteBusiness.ExcluirCliente(id);
@@ -62,5 +63,13 @@ namespace BaseAPI.Controllers
             }
         }
 
+
+        [HttpPost]
+        [Route("GetClientes")]
+        public async Task<IActionResult> GetClientes([FromServices] IClienteBusiness clienteBusiness)
+        {
+            var clientes = await clienteBusiness.ListarClientes();
+            return Ok(clientes);
+        }
     }
 }
