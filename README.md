@@ -8,6 +8,7 @@ Este projeto tem por finalidade demonstrar os conhecimentos adquiridos durante o
 - C#
 - Oracle como banco de dados
 - Swagger
+- Dapper
 - Entity Framework
 
 ## Formação da Equipe "OsMiranha"
