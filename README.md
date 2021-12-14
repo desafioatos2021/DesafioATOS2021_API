@@ -2,7 +2,7 @@
 
 Este projeto tem por finalidade demonstrar os conhecimentos adquiridos durante o programa Acelera Atos by Gama Academy
 
-## Tecnologias Utlizadas
+## Tecnologias Utilizadas
 
 - .NET 6
 - C#
