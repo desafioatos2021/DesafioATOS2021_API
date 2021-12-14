@@ -109,20 +109,6 @@ namespace Base.DATA.Repository
             }
         }
 
-        public async Task<Venda> UpdateVendaAsync(int id)
-        {
-            var vendaAtualizada = _context.Venda.FirstOrDefault(v => v.IdVenda == id);
-
-            if (vendaAtualizada == null)
-            {
-                return null;
-            }
-            else
-            {
-                _context.Update(vendaAtualizada);
-                await _context.SaveChangesAsync();
-                return vendaAtualizada;
-            }
-        }
+        
     }
 }

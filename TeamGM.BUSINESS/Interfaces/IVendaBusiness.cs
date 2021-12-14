@@ -11,10 +11,8 @@ namespace Base.BUSINESS.Interfaces
     {
         Task<Venda> AdicionarVenda(Venda venda);
         Task<Venda> ExcluirVenda(int id);
-        Task<Venda> ExcluirVenda(Venda venda);
         Task<Venda> ExcluirVenda(string numeroPedido);
         Task<Venda> AtualizarVenda(Venda venda);
-        Task<Venda> AtualizarVenda(int id);
         Task<IEnumerable<Venda>> PegarTodasAsVendas();
         Task<Venda> PegarVendaPorId(int id);
     }

@@ -42,6 +42,15 @@ namespace TeamGMAPI.Controllers
             return CustomResponse();
         }
 
+        protected ActionResult CustomResponse(Exception ex)
+        {
+            return BadRequest(new
+            {
+                success = false,
+                message = ex.Message
+            });
+        }
+
         protected ActionResult CustomResponse(object result = null)
         {
             if (OperacaoValida())

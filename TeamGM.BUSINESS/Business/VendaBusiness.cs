@@ -27,8 +27,6 @@ namespace Base.BUSINESS.Business
         public async Task<Venda> AtualizarVenda(Venda venda) =>
             await _vendaRepository.UpdateVendaAsync(venda);
 
-        public async Task<Venda> AtualizarVenda(int id) =>
-            await _vendaRepository.UpdateVendaAsync(id);
 
         public Task<Venda> ExcluirVenda(int id)
         {
@@ -36,11 +34,6 @@ namespace Base.BUSINESS.Business
             return vendaExcluida;
         }
 
-        public Task<Venda> ExcluirVenda(Venda venda)
-        {
-            var vendaExcluida = _vendaRepository.DeleteVendaAsync(venda);
-            return vendaExcluida;
-        }
 
         public Task<Venda> ExcluirVenda(string numeroPedido) =>
             _vendaRepository.DeleteVendaPedidoAsync(numeroPedido);
