@@ -10,11 +10,10 @@ namespace Base.BUSINESS.Interfaces
     public interface IClienteBusiness
     {
         Task<Cliente> AdicionarCliente(Cliente cliente);
-
         Task<Cliente> ExcluirCliente(int id);
         Task<Cliente> UpdateCliente(Cliente cliente);
-        Task<Cliente> ListarClientes();
         Task<Cliente> ConsultarClientePorNome(string nome);
         Task<Cliente> ConsultarClientePorId(int id);
+        Task<IEnumerable<Cliente>> ListarClientes();
     }
 }

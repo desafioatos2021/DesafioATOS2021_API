@@ -21,28 +21,28 @@ namespace Base.DATA.Maps
                 .IsRequired()
                 .HasColumnType("varchar(50)");
 
-            builder.Property<float>("ValorProduto")
+            builder.Property<double>("ValorProduto")
                 .IsRequired()
-                .HasColumnType("float");
+                .HasColumnType("number(10, 2)");
 
             builder.Property<int>("QuantidadeEstoque")
                 .IsRequired()
-                .HasColumnType("integer");
+                .HasColumnType("number");
 
             builder.Property<int>("QuantidadeVendas")
                 .IsRequired()
-                .HasColumnType("integer");
+                .HasColumnType("number");
 
             builder.Property<string>("DescricaoProduto")
                 .IsRequired()
                 .HasColumnType("varchar(250)");
 
-            builder.Property<sbyte>("Avaliacao")
-                .HasColumnType("byte");
+            builder.Property<int>("Avaliacao")
+                .HasColumnType("number");
 
             //TODO: Leonardo confirmar
-            builder.Property<byte[]>("Avaliacao")
-                .HasColumnType("blob");
+            //builder.Property<byte[]>("Avaliacao")
+            //    .HasColumnType("blob");
 
             //builder.HasOne(p => p.CategoriaProduto);
     }

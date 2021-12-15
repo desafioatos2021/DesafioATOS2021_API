@@ -20,7 +20,7 @@ namespace BaseAPI.Controllers
 
         [HttpDelete]
         [Route("ExcluirProduto/{id}")]
-        public async Task<IActionResult> ExcluiCliente(int id)
+        public async Task<IActionResult> ExcluirProduto(int id)
         {
             var clienteExcluido = await _produtoBusiness.ExcluirProduto(id);
             if (clienteExcluido == null)
