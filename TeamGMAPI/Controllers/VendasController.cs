@@ -117,7 +117,7 @@ namespace BaseAPI.Controllers
         {
             try
             {
-                var vendaExcluida = await vendaBusiness.ExcluirVenda(venda);
+                var vendaExcluida = await vendaBusiness.ExcluirVenda(venda.IdVenda);
                 if (vendaExcluida == null)
                 {
                     return NotFound();
