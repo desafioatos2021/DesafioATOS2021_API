@@ -2,6 +2,9 @@
 
 Este projeto tem por finalidade demonstrar os conhecimentos adquiridos durante o programa Acelera Atos by Gama Academy
 
+  O Desafio é desenvolver microserviços em .NET para compor funções que atendam o negócio de uma empresa fictícia. Os microsserviços devem expor API’s atendendo o padrão Restful e com uma documentação no modelo Swagger.
+  Construir uma outra aplicação com a única finalidade de consumir eventos e expor consulta desses eventos deve ser construída para consumir os eventos gerados pela API principal escolhida e que irá registrar esses eventos em banco de dados.
+
 ## Tecnologias Utilizadas
 
 - .NET 6
@@ -11,10 +14,27 @@ Este projeto tem por finalidade demonstrar os conhecimentos adquiridos durante o
 - Dapper
 - Entity Framework
 
+## Desafios
+
+- Criação de um microsserviço de Domínio e uma API consumidora dos eventos
+- A estrutura de dados a serem criados deve ser coerente assim como os tipos de dados
+- Deve conter uma entidade forte do Domínio, e que deve ter pelo menos um relacionamento um-para-muitos
+- O microsserviço deve ter no mínimo 90% de cobertura nos testes
+- A regra de negócio inserida no microsserviço fica a critério, porém quanto mais regras, melhor será o aproveitamento com os TDD’s
+- Os testes de integração devem conter um fluxo com sucesso e um com validação para cada API criada (GET/POST/PUT/PATCH/DELETE)
+- Disponibilizar uma documentação do microsserviço com Swagger
+- Criar um desenho dos componentes a serem criados para abstrair os cenários
+
+## Critérios de Avaliação
+
+-  Boa práticas de Orientação a Objeto
+- Validação de testes cobrindo o que realmente deve ser coberto
+- Ao executar todas as funcionalidades devem ser executadas ou pelo Swagger ou pelo Postman, simulando uma integração entre os sistemas, sem erros sistêmicos, apenas com erros de validação de negócio será aceita
+
 ## Formação da Equipe "OsMiranha"
 
-- Deyvison J Paula
+- <a href="https://github.com/deyvisonjp">Deyvison J Paula </a>
 - Leonardo A Rocha
-- Tácito Batista
+- <a href="https://github.com/tacitobatista">Tácito Batista </a>
 - Thiago Q Morcaty
 - <a href="https://github.com/vitormartins1">Vitor Martins </a>
