@@ -1,6 +1,6 @@
 # Desafio Acelera Atos - Gama Academy (C#)
 
-Este projeto tem por finalidade demonstrar os conhecimentos adquiridos durante o programa Acelera Atos by Gama Academy
+Este projeto tem por finalidade demonstrar os conhecimentos adquiridos durante o treinamento de aceleração [Acelera Atos .NET] by Gama Academy
 
   O Desafio é desenvolver microserviços em .NET para compor funções que atendam o negócio de uma empresa fictícia. Os microsserviços devem expor API’s atendendo o padrão Restful e com uma documentação no modelo Swagger.
   Construir uma outra aplicação com a única finalidade de consumir eventos e expor consulta desses eventos deve ser construída para consumir os eventos gerados pela API principal escolhida e que irá registrar esses eventos em banco de dados.
