@@ -34,5 +34,12 @@ namespace Base.DATA.Repository
             await _context.SaveChangesAsync();
             return produtoRemovido.Entity;
         }
+
+        public async Task<Produto> InsertProdutoAsync(Produto produto)
+        {
+            await _context.Produto.AddAsync(produto);
+            await _context.SaveChangesAsync();
+            return produto;
+        }
     }
 }

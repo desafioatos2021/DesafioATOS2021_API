@@ -16,6 +16,12 @@ namespace Base.BUSINESS.Business
             _produtoRepository = produtoRepository;
         }
 
+        public Task<Produto> CadastrarProduto(Produto produto)
+        {
+            var produtoCadastrado = _produtoRepository.InsertProdutoAsync(produto);
+            return produtoCadastrado;
+        }
+
         public Task<Produto> ExcluirProduto(int id)
         {
             var produtoeExluido = _produtoRepository.DeleteProdutoAsync(id);

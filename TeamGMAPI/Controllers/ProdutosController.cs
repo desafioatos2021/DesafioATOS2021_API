@@ -29,5 +29,21 @@ namespace BaseAPI.Controllers
             }
             return NoContent();
         }
+
+        [HttpPost]
+        [Route("CadastroProduto")]
+        public async Task<IActionResult> CadastroProduto(Produto produto,
+            [FromServices] IProdutoBusiness produtoBusiness)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                var produtoCadastrado = await produtoBusiness.CadastrarProduto(produto);
+                return Ok(produto);
+            }
+        }
     }
 }

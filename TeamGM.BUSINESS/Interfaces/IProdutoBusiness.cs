@@ -10,6 +10,6 @@ namespace Base.BUSINESS.Interfaces
     public interface IProdutoBusiness
     {
         Task<Produto> ExcluirProduto(int id);
-
+        Task<Produto> CadastrarProduto(Produto produto);
     }
 }
