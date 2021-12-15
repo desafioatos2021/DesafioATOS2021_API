@@ -64,12 +64,30 @@ namespace BaseAPI.Controllers
         }
 
 
-        [HttpPost]
+        [HttpGet]
         [Route("GetClientes")]
         public async Task<IActionResult> GetClientes([FromServices] IClienteBusiness clienteBusiness)
         {
             var clientes = await clienteBusiness.ListarClientes();
             return Ok(clientes);
+        }
+
+        [HttpGet]
+        [Route("GetClienteNome/{nome}")]
+        public async Task<IActionResult> GetClientePorNome(string nome
+            , [FromServices] IClienteBusiness clienteBusiness)
+        {
+            var cliente = await clienteBusiness.ConsultarClientePorNome(nome);
+            return Ok(cliente);
+        }
+
+        [HttpGet]
+        [Route("GetClienteId/{id}")]
+        public async Task<IActionResult> GetClientePorId(int id
+            , [FromServices] IClienteBusiness clienteBusiness)
+        {
+            var cliente = await clienteBusiness.ConsultarClientePorId(id);
+            return Ok(cliente);
         }
     }
 }

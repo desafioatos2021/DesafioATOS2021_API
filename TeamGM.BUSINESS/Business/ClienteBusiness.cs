@@ -22,6 +22,18 @@ namespace Base.BUSINESS.Business
             return clienteRetorno;
         }
 
+        public async Task<Cliente> ConsultarClientePorId(int id)
+        {
+            var clienteConsultado = await _clienteRepository.GetClienteIdAsync(id);
+            return clienteConsultado;
+        }
+
+        public Task<Cliente> ConsultarClientePorNome(string nome)
+        {
+            var clienteConsultado = _clienteRepository.GetClienteNomeAsync(nome);
+            return clienteConsultado;
+        }
+
         public Task<Cliente> ExcluirCliente(int id)
         {
             var clienteExluido = _clienteRepository.DeleteClienteAsync(id);
