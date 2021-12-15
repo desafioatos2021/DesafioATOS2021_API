@@ -1,14 +1,33 @@
-﻿using Base.DOMAIN.Models;
+﻿using Base.BUSINESS.Interfaces;
+using Base.DOMAIN.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using TeamGM.DOMAIN.Interfaces.Helpers;
+using TeamGMAPI.Controllers;
 
 namespace BaseAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ProdutosController : Controller
+    public class ProdutosController : MainController
     {
+        private readonly IProdutoBusiness _produtoBusiness;
 
+        public ProdutosController(INotificador notificador, IUser user, IProdutoBusiness produtoBusiness) : base(notificador, user)
+        {
+            _produtoBusiness = produtoBusiness;
+        }
 
+        [HttpDelete]
+        [Route("ExcluirProduto/{id}")]
+        public async Task<IActionResult> ExcluiCliente(int id)
+        {
+            var clienteExcluido = await _produtoBusiness.ExcluirProduto(id);
+            if (clienteExcluido == null)
+            {
+                return NotFound();
+            }
+            return NoContent();
+        }
     }
 }

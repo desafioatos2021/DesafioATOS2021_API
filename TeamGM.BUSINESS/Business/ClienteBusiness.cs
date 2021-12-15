@@ -24,7 +24,8 @@ namespace Base.BUSINESS.Business
 
         public Task<Cliente> ExcluirCliente(int id)
         {
-            throw new NotImplementedException();
+            var clienteExluido = _clienteRepository.DeleteClienteAsync(id);
+            return clienteExluido;
         }
 
         public Task<Cliente> ListarClientes()
