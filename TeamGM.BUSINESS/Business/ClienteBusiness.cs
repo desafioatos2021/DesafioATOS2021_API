@@ -2,6 +2,7 @@
 using Base.DATA.Interfaces;
 using Base.DOMAIN.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Base.BUSINESS.Business
@@ -28,15 +29,14 @@ namespace Base.BUSINESS.Business
             return clienteExluido;
         }
 
-        public Task<Cliente> ListarClientes()
+        public async Task<IEnumerable<Cliente>> ListarClientes()
         {
-            dynamic clientes = _clienteRepository.GetClientesAsync();
+            var clientes = await _clienteRepository.GetClientesAsync();
             return clientes;
         }
 
-        public Task<Cliente> UpdateCliente(Cliente cliente)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<Cliente> UpdateCliente(Cliente cliente) =>
+            await _clienteRepository.UpdateClienteAsync(cliente);
+        
     }
 }

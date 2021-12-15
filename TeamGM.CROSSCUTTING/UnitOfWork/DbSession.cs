@@ -19,7 +19,7 @@ namespace TeamGM.CROSSCUTTING.UnitOfWork
         public DbSession(IConfiguration configuration)
         {
             _configuration = configuration;
-            Connection = new OracleConnection(_configuration.GetConnectionString("TeamGmDbConnection"));
+            Connection = new OracleConnection(_configuration.GetConnectionString("DesafioAtosConnection"));
             Connection.Open();
         }
 

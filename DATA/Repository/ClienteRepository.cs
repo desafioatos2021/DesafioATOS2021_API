@@ -1,10 +1,13 @@
 ﻿using Base.DATA.Interfaces;
 using Base.DOMAIN.Models;
+using Dapper;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TeamGM.CROSSCUTTING.UnitOfWork;
 using TeamGM.DATA.Context;
 
 namespace Base.DATA.Repository
@@ -12,10 +15,12 @@ namespace Base.DATA.Repository
     public class ClienteRepository : IClienteRepository
     {
         private readonly DesafioAtosContext _context;
+        private readonly IDapperUnitOfWork _dapperUnitOfWork;
 
-        public ClienteRepository(DesafioAtosContext context)
+        public ClienteRepository(DesafioAtosContext context, IDapperUnitOfWork dapperUnitOfWork)
         {
             _context = context;
+            _dapperUnitOfWork = dapperUnitOfWork;
         }
         public async Task<Cliente> InsertClienteAsync(Cliente cliente)
         {
@@ -47,8 +52,19 @@ namespace Base.DATA.Repository
 
         public async Task<IEnumerable<Cliente>> GetClientesAsync()
         {
-            var clientes = _context.Cliente.ToList();
-            return clientes;
+            try
+            {
+                _dapperUnitOfWork.BeginTransaction();
+
+                string sqlSearch = @$"SELECT * FROM ""Cliente""";
+                var clientes = SqlMapper.Query<Cliente>(_dapperUnitOfWork.Session.Connection, sqlSearch);
+
+                return clientes;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         public async Task<Cliente> UpdateClienteAsync(Cliente cliente)
@@ -59,6 +75,8 @@ namespace Base.DATA.Repository
                 return null;
             else
             {
+                clienteAtualizado.Nome = cliente.Nome;
+                clienteAtualizado.IdEndereco = cliente.IdEndereco;
                 _context.Update(clienteAtualizado);
                 await _context.SaveChangesAsync();
                 return clienteAtualizado;

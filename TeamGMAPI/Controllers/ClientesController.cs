@@ -37,8 +37,7 @@ namespace BaseAPI.Controllers
         /// </summary>
         /// <param name="id" example="123">Id do cliente</param>
         [HttpDelete]
-        [HttpDelete("{id}")]
-        [Route("ExcluirCliente")]
+        [Route("ExcluirCliente/{id}")]
         public async Task<IActionResult> ExcluiCliente(int id)
         {
             var clienteExcluido = await _clienteBusiness.ExcluirCliente(id);
@@ -50,7 +49,7 @@ namespace BaseAPI.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPut]
         [Route("UpdateCliente")]
         public async Task<IActionResult> UpdateCliente(Cliente cliente, [FromServices] IClienteBusiness clienteBusiness)
         {
@@ -64,7 +63,7 @@ namespace BaseAPI.Controllers
         }
 
 
-        [HttpPost]
+        [HttpGet]
         [Route("GetClientes")]
         public async Task<IActionResult> GetClientes([FromServices] IClienteBusiness clienteBusiness)
         {
