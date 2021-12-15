@@ -22,5 +22,4 @@ namespace Base.BUSINESS.Business
             return produtoeExluido;
         }
     }
-    }
 }
