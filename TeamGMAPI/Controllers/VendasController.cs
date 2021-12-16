@@ -14,6 +14,11 @@ namespace BaseAPI.Controllers
         public VendasController(INotificador notificador, IUser user)
             : base(notificador, user) { }
 
+        /// <summary>
+        /// Lista todas as vendas registradas até o momento no sistema.
+        /// </summary>
+        /// <param name="vendaBusiness"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("Todas")]
         public async Task<IActionResult> PegarTodasAsVendas([FromServices] IVendaBusiness vendaBusiness)
@@ -31,6 +36,12 @@ namespace BaseAPI.Controllers
 
         }
 
+        /// <summary>
+        /// Pega uma venda pelo seu ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="vendaBusiness"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("Pegar/{id}")]
         public async Task<IActionResult> PegarVendaPorId(int id, [FromServices] IVendaBusiness vendaBusiness)
@@ -48,6 +59,12 @@ namespace BaseAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Insere uma venda com todos os seus valores preenchidos ou só os obrigatórios.
+        /// </summary>
+        /// <param name="venda"></param>
+        /// <param name="vendaBusiness"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("Inserir")]
         public async Task<IActionResult> InsereVenda(Venda venda,
@@ -66,6 +83,12 @@ namespace BaseAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Exclui uma venda a partir de seu ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="vendaBusiness"></param>
+        /// <returns></returns>
         [HttpDelete]
         [Route("Excluir/{id}")]
         public async Task<IActionResult> ExcluirVenda(int id,
@@ -88,6 +111,12 @@ namespace BaseAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Exclui uma venda a partir do numero do pedido da venda.
+        /// </summary>
+        /// <param name="numeroPedido" example="WP87894"></param>
+        /// <param name="vendaBusiness"></param>
+        /// <returns></returns>
         [HttpDelete]
         [Route("Excluir/{numeroPedido}")]
         public async Task<IActionResult> ExcluirVenda(string numeroPedido,
@@ -110,6 +139,12 @@ namespace BaseAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Exclui uma venda a partir de seu objeto específico do tipo Venda
+        /// </summary>
+        /// <param name="venda"></param>
+        /// <param name="vendaBusiness"></param>
+        /// <returns></returns>
         [HttpDelete]
         [Route("Excluir/{venda}")]
         public async Task<IActionResult> ExcluirVenda(Venda venda,
@@ -134,6 +169,12 @@ namespace BaseAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualiza uma venda a partir de seu ID.
+        /// </summary>
+        /// <param name="venda"></param>
+        /// <param name="vendaBusiness"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("Atualizar")]
         public async Task<IActionResult> UpdateVenda(Venda venda,

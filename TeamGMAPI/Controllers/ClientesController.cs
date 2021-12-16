@@ -18,7 +18,12 @@ namespace BaseAPI.Controllers
             _clienteBusiness = clienteBusiness;
         }
 
-
+        /// <summary>
+        /// Insere um cliente no sistema com todos os seus valores preenchidos ou só os obrigatórios
+        /// </summary>
+        /// <param name="cliente"></param>
+        /// <param name="clienteBusiness"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("InsereCliente")]
         public async Task<IActionResult> InsereCliente(Cliente cliente,  [FromServices] IClienteBusiness clienteBusiness)
@@ -33,7 +38,7 @@ namespace BaseAPI.Controllers
         }
 
         /// <summary>
-        /// Exclui um cliente.
+        /// Exclui um cliente a partir de seu ID.
         /// </summary>
         /// <param name="id" example="123">Id do cliente</param>
         [HttpDelete]
@@ -48,7 +53,12 @@ namespace BaseAPI.Controllers
             return NoContent();
         }
 
-
+        /// <summary>
+        /// Atualiza um cliente a partir de seu ID.
+        /// </summary>
+        /// <param name="cliente"></param>
+        /// <param name="clienteBusiness"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("UpdateCliente")]
         public async Task<IActionResult> UpdateCliente(Cliente cliente, [FromServices] IClienteBusiness clienteBusiness)
@@ -64,7 +74,11 @@ namespace BaseAPI.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Lista todos os clientes cadastrados até o momento no sistema.
+        /// </summary>
+        /// <param name="clienteBusiness"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("GetClientes")]
         public async Task<IActionResult> GetClientes([FromServices] IClienteBusiness clienteBusiness)
@@ -73,6 +87,12 @@ namespace BaseAPI.Controllers
             return Ok(clientes);
         }
 
+        /// <summary>
+        /// Consulta um cliente pelo seu nome.
+        /// </summary>
+        /// <param name="nome" example="Nome"></param>
+        /// <param name="clienteBusiness"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("GetClienteNome/{nome}")]
         public async Task<IActionResult> GetClientePorNome(string nome
@@ -82,6 +102,12 @@ namespace BaseAPI.Controllers
             return Ok(cliente);
         }
 
+        /// <summary>
+        /// Consulta um cliente pelo seu ID.
+        /// </summary>
+        /// <param name="id" example="3"></param>
+        /// <param name="clienteBusiness"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("GetClienteId/{id}")]
         public async Task<IActionResult> GetClientePorId(int id
