@@ -35,6 +35,19 @@ namespace Base.DATA.Repository
             return produtoRemovido.Entity;
         }
 
+        public async Task<Produto> GetProdutoIdAsyn(int id)
+        {
+            var produtoConsultado = _context.Produto.Where(p => p.IdProduto == id).FirstOrDefault();
+            if (produtoConsultado == null) return null;
+            await _context.SaveChangesAsync();
+            return produtoConsultado;
+        }
+
+        public Task<IEnumerable<Produto>> GetProdutosAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<Produto> InsertProdutoAsync(Produto produto)
         {
             await _context.Produto.AddAsync(produto);

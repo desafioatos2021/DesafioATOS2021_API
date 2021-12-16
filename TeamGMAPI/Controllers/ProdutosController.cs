@@ -45,5 +45,14 @@ namespace BaseAPI.Controllers
                 return Ok(produto);
             }
         }
+
+        [HttpGet]
+        [Route("ListarProdutoId/{id}")]
+        public async Task<IActionResult> ConsultarProduto(int id,
+            [FromServices] IProdutoBusiness produtoBusiness)
+        {
+            var produto = await produtoBusiness.ListarProdutoId(id);
+            return Ok(produto);
+        }
     }
 }

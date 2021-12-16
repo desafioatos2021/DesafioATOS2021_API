@@ -11,5 +11,7 @@ namespace Base.BUSINESS.Interfaces
     {
         Task<Produto> ExcluirProduto(int id);
         Task<Produto> CadastrarProduto(Produto produto);
+        Task<Produto> ListarProdutoId(int id);
+        Task<IEnumerable<Produto>> ListasProdutos();
     }
 }
