@@ -45,10 +45,15 @@ namespace TeamGMAPI
             /*options.UseSqlServer(Configuration.GetConnectionString("SQL_SERVER_Connection"),
             b => b.MigrationsAssembly("Base.DATA")));*/
 
-            services.AddSwaggerGen(c =>
+            services.AddSwaggerGen(options =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Desafio Atos 2021", Version = "v1" });
-                c.IncludeXmlComments(xmlPath, true);
+                options.SwaggerDoc("v1", new OpenApiInfo 
+                { 
+                    Title = "Desafio Atos 2021", 
+                    Version = "v1",
+                    Description = "ASP.NET Core Web API para gerenciamento de Vendas e Clientes da Empresa NetBull."
+                });
+                options.IncludeXmlComments(xmlPath, true);
             });
             
             services.Configure<ApiBehaviorOptions>(options =>
