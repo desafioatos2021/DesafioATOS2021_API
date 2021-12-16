@@ -70,5 +70,26 @@ namespace Base.DATA.Repository
             await _context.SaveChangesAsync();
             return produto;
         }
+
+        public async Task<Produto> UpdateProdutoAsync(Produto produto)
+        {
+            var produtoAtualizado = _context.Produto.Where(p => p.IdProduto == produto.IdProduto).FirstOrDefault();
+            
+            if (produtoAtualizado == null) return null;
+
+            produtoAtualizado.NomeProduto = produto.NomeProduto;
+            produtoAtualizado.Avaliacao = produto.Avaliacao;
+            produtoAtualizado.CategoriaProduto = produto.CategoriaProduto;
+            produtoAtualizado.DescricaoProduto = produto.DescricaoProduto;
+            produtoAtualizado.FotoProduto = produto.FotoProduto;
+            produtoAtualizado.IdFabricante = produto.IdFabricante;
+            produtoAtualizado.QuantidadeVendas = produto.QuantidadeVendas;
+            produtoAtualizado.QuantidadeEstoque = produto.QuantidadeEstoque;
+            produtoAtualizado.ValorProduto = produto.ValorProduto;
+
+            _context.Update(produtoAtualizado);
+            await _context.SaveChangesAsync();
+            return produtoAtualizado;
+        }
     }
 }

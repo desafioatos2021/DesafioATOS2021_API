@@ -62,5 +62,30 @@ namespace BaseAPI.Controllers
             var produtos = await produtoBusiness.ListasProdutos();
             return Ok(produtos);
         }
+
+        [HttpPut]
+        [Route("UpdateProduto")]
+        public async Task<IActionResult> UpdateProduto(Produto produto, 
+            [FromServices] IProdutoBusiness produtoBusiness)
+        {
+            try
+            {
+                var produtoAtualizado = await produtoBusiness.AtualizarProduto(produto);
+                return CustomResponse(produtoAtualizado);
+            }
+            catch (System.Exception)
+            {
+                return BadRequest();
+            }
+
+            // FIXME: Qual das duas implementacoes e correta de se usar? A de cima ou essa?
+            //if (!ModelState.IsValid)
+            //    return BadRequest();
+            //else
+            //{
+            //    var produtoAtualizado = await produtoBusiness.AtualizarProduto(produto);
+            //    return CustomResponse(ModelState);
+            //}
+        }
     }
 }

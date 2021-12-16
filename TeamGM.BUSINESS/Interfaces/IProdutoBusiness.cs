@@ -13,5 +13,6 @@ namespace Base.BUSINESS.Interfaces
         Task<Produto> CadastrarProduto(Produto produto);
         Task<Produto> ListarProdutoId(int id);
         Task<IEnumerable<Produto>> ListasProdutos();
+        Task<Produto> AtualizarProduto(Produto produto);
     }
 }
