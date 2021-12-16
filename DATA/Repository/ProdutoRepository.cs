@@ -18,10 +18,7 @@ namespace Base.DATA.Repository
             _context = context;
         }
 
-        public Produto CadastrarProduto(Produto produto)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public async Task<Produto> DeleteProdutoAsync(int id)
         {
@@ -41,5 +38,7 @@ namespace Base.DATA.Repository
             await _context.SaveChangesAsync();
             return produto;
         }
+
+
     }
 }

@@ -9,7 +9,7 @@ namespace Base.DATA.Interfaces
 {
     public interface IProdutoRepository
     {
-        Produto CadastrarProduto(Produto produto);
+        
         Task<Produto> DeleteProdutoAsync(int id);
         Task<Produto> InsertProdutoAsync(Produto produto);
     }
