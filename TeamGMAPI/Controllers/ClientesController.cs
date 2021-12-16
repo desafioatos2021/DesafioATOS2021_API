@@ -53,12 +53,14 @@ namespace BaseAPI.Controllers
         [Route("UpdateCliente")]
         public async Task<IActionResult> UpdateCliente(Cliente cliente, [FromServices] IClienteBusiness clienteBusiness)
         {
-            if (!ModelState.IsValid)
-                return BadRequest();
-            else
+            try
             {
-                var clienteSalvo = await clienteBusiness.UpdateCliente(cliente);
-                return CustomResponse(ModelState);
+                var clienteAtualizado = await clienteBusiness.UpdateCliente(cliente);
+                return CustomResponse(clienteAtualizado);
+            }
+            catch (System.Exception)
+            {
+                return BadRequest();
             }
         }
 

@@ -18,6 +18,10 @@ namespace BaseAPI.Controllers
             _produtoBusiness = produtoBusiness;
         }
 
+        /// <summary>
+        /// Exclui um produto pelo seu ID
+        /// </summary>
+        /// <param name="id" example="64">ID do Produto</param>
         [HttpDelete]
         [Route("ExcluirProduto/{id}")]
         public async Task<IActionResult> ExcluirProduto(int id)
@@ -30,6 +34,11 @@ namespace BaseAPI.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Cadastra um produto com todos os seus valores preenchidos ou somente os obrigatórios.
+        /// </summary>
+        /// <param name="produto"></param>
+        /// <param name="produtoBusiness"></param>
         [HttpPost]
         [Route("CadastroProduto")]
         public async Task<IActionResult> CadastroProduto(Produto produto,
@@ -46,6 +55,11 @@ namespace BaseAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Lista um único produto a partir de seu ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="produtoBusiness"></param>
         [HttpGet]
         [Route("ListarProdutoId/{id}")]
         public async Task<IActionResult> ConsultarProduto(int id,
@@ -55,6 +69,11 @@ namespace BaseAPI.Controllers
             return Ok(produto);
         }
 
+        /// <summary>
+        /// Lista todos os produtos cadastrados atualmente.
+        /// </summary>
+        /// <param name="produtoBusiness"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("ListarProdutos")]
         public async Task<IActionResult> ConsultarProduto([FromServices] IProdutoBusiness produtoBusiness)
@@ -63,6 +82,11 @@ namespace BaseAPI.Controllers
             return Ok(produtos);
         }
 
+        /// <summary>
+        /// Atualiza um produto e todos os seus campos de valor a partir do ID desse produto.
+        /// </summary>
+        /// <param name="produto"></param>
+        /// <param name="produtoBusiness"></param>
         [HttpPut]
         [Route("UpdateProduto")]
         public async Task<IActionResult> UpdateProduto(Produto produto, 
@@ -77,15 +101,6 @@ namespace BaseAPI.Controllers
             {
                 return BadRequest();
             }
-
-            // FIXME: Qual das duas implementacoes e correta de se usar? A de cima ou essa?
-            //if (!ModelState.IsValid)
-            //    return BadRequest();
-            //else
-            //{
-            //    var produtoAtualizado = await produtoBusiness.AtualizarProduto(produto);
-            //    return CustomResponse(ModelState);
-            //}
         }
     }
 }
