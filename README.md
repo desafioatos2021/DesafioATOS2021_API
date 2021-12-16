@@ -42,7 +42,9 @@ Este projeto tem por finalidade demonstrar os conhecimentos adquiridos durante o
 - ItemVenda
 - Produto
 
+O Cliente se relaciona com o domínio Venda de um para muitos, pois um cliente pode ter muitas vendas mas uma venda não pode ter muitos clientes. 
 
+A Venda possui uma coleção de ItemVenda e que cada ItemVenda representa um Produto da compra. ItemVenda possui "IdVenda" e o "IdProduto". A Venda se relaciona com ItemVenda de um para muitos, uma Venda pode ter inumeros ItemVenda, mas o ItemVenda só pode se relacionar com uma Venda e um Produto.
 
 ## Formação da Equipe "OsMiranha"
 
