@@ -46,10 +46,12 @@ O Cliente se relaciona com o domínio Venda de um para muitos, pois um cliente p
 
 A Venda possui uma coleção de ItemVenda e que cada ItemVenda representa um Produto da compra. ItemVenda possui "IdVenda" e o "IdProduto". A Venda se relaciona com ItemVenda de um para muitos, uma Venda pode ter inumeros ItemVenda, mas o ItemVenda só pode se relacionar com uma Venda e um Produto.
 
+O ItemVenda em nosso contexto é uma entidade fraca pois ela só carrega os produtos da venda. O Produto é uma entidade forte pois não se relaciona diretamente. Somente por Id.
+
 ## Formação da Equipe "OsMiranha"
 
 - <a href="https://github.com/deyvisonjp">Deyvison J Paula </a>
-- Leonardo A Rocha
+- <a href="https://github.com/leoasprinorocha">Leonardo A Rocha </a>
 - <a href="https://github.com/tacitobatista">Tácito Batista </a>
 - <a href="https://github.com/thiagomorcatty">Thiago Morcatty </a>
 - <a href="https://github.com/vitormartins1">Vitor Martins </a>
