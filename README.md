@@ -31,6 +31,11 @@ Este projeto tem por finalidade demonstrar os conhecimentos adquiridos durante o
 - Validação de testes cobrindo o que realmente deve ser coberto
 - Ao executar todas as funcionalidades devem ser executadas ou pelo Swagger ou pelo Postman, simulando uma integração entre os sistemas, sem erros sistêmicos, apenas com erros de validação de negócio será aceita
 
+## Diagrama UML
+<p align="center">
+  <img src="diagrama.png" width="650" title="diagrama uml">
+</p>
+
 ## Formação da Equipe "OsMiranha"
 
 - <a href="https://github.com/deyvisonjp">Deyvison J Paula </a>
