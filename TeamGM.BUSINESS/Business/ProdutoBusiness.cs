@@ -35,9 +35,10 @@ namespace Base.BUSINESS.Business
             return produtoConsultado;
         }
 
-        public Task<IEnumerable<Produto>> ListasProdutos()
+        public async Task<IEnumerable<Produto>> ListasProdutos()
         {
-            throw new NotImplementedException();
+            var produtos = await _produtoRepository.GetProdutosAsync();
+            return produtos;
         }
     }
 }

@@ -1,10 +1,13 @@
 ﻿using Base.DATA.Interfaces;
 using Base.DOMAIN.Models;
+using Dapper;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TeamGM.CROSSCUTTING.UnitOfWork;
 using TeamGM.DATA.Context;
 
 namespace Base.DATA.Repository
@@ -12,10 +15,12 @@ namespace Base.DATA.Repository
     public class ProdutoRepository : IProdutoRepository
     {
         private readonly DesafioAtosContext _context;
+        private readonly IDapperUnitOfWork _dapperUnitOfWork;
 
-        public ProdutoRepository(DesafioAtosContext context)
+        public ProdutoRepository(DesafioAtosContext context, IDapperUnitOfWork dapperUnitOfWork)
         {
             _context = context;
+            _dapperUnitOfWork = dapperUnitOfWork;
         }
 
         public Produto CadastrarProduto(Produto produto)
@@ -43,9 +48,20 @@ namespace Base.DATA.Repository
             return produtoConsultado;
         }
 
-        public Task<IEnumerable<Produto>> GetProdutosAsync()
+        public async Task<IEnumerable<Produto>> GetProdutosAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                _dapperUnitOfWork.BeginTransaction();
+
+                string sqlSearch = @$"SELECT * FROM ""Produtos""";
+                var produtos = SqlMapper.Query<Produto>(_dapperUnitOfWork.Session.Connection, sqlSearch);
+                return produtos;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         public async Task<Produto> InsertProdutoAsync(Produto produto)
