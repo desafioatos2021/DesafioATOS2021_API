@@ -37,14 +37,9 @@ namespace Base.DATA.Maps
                 .IsRequired()
                 .HasColumnType("varchar(250)");
 
-            builder.Property<int>("Avaliacao")
-                .HasColumnType("number");
+            
 
-            //TODO: Leonardo confirmar
-            //builder.Property<byte[]>("Avaliacao")
-            //    .HasColumnType("blob");
-
-            //builder.HasOne(p => p.CategoriaProduto);
+            
     }
     }
 }

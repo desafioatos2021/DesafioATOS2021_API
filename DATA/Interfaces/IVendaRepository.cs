@@ -12,7 +12,6 @@ namespace Base.DATA.Interfaces {
         Task<IEnumerable<Venda>> GetTodasAsVendasAsync();
         Task<Venda> GetVendaIdAsync(int id);
         Task<Venda> GetVendaPedidoAsync(string pedido);
-        Task<Venda> UpdateVendaAsync(Venda venda);
         Task<Venda> DeleteVendaIdAsync(int id);
         Task<Venda> DeleteVendaPedidoAsync(string pedido);
     }

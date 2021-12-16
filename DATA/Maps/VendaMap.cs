@@ -11,8 +11,6 @@ namespace Base.DATA.Maps
             builder.ToTable(nameof(Venda))
                 .HasKey(c => c.IdVenda);
 
-            builder.HasMany(c => c.ItemVendas);
-
             builder.HasOne(c => c.Cliente).WithMany(c => c.Vendas).IsRequired().HasForeignKey(c => c.IdCliente);
         }
     }

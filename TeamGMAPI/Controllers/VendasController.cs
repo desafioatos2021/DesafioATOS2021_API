@@ -91,7 +91,7 @@ namespace BaseAPI.Controllers
         /// <returns></returns>
         [HttpDelete]
         [Route("Excluir/{id}")]
-        public async Task<IActionResult> ExcluirVenda(int id,
+        public async Task<IActionResult> Excluir(int id,
             [FromServices] IVendaBusiness vendaBusiness)
         {
             try
@@ -118,8 +118,8 @@ namespace BaseAPI.Controllers
         /// <param name="vendaBusiness"></param>
         /// <returns></returns>
         [HttpDelete]
-        [Route("Excluir/{numeroPedido}")]
-        public async Task<IActionResult> ExcluirVenda(string numeroPedido,
+        [Route("ExcluirNumeroPedido/{numeroPedido}")]
+        public async Task<IActionResult> ExcluirNumeroPedido(string numeroPedido,
             [FromServices] IVendaBusiness vendaBusiness)
         {
             try
@@ -146,7 +146,7 @@ namespace BaseAPI.Controllers
         /// <param name="vendaBusiness"></param>
         /// <returns></returns>
         [HttpDelete]
-        [Route("Excluir/{venda}")]
+        [Route("ExcluirObjetoCompleto/{venda}")]
         public async Task<IActionResult> ExcluirVenda(Venda venda,
             [FromServices] IVendaBusiness vendaBusiness)
         {
@@ -169,44 +169,7 @@ namespace BaseAPI.Controllers
             }
         }
 
-        /// <summary>
-        /// Atualiza uma venda a partir de seu ID.
-        /// </summary>
-        /// <param name="venda"></param>
-        /// <param name="vendaBusiness"></param>
-        /// <returns></returns>
-        [HttpPut]
-        [Route("Atualizar")]
-        public async Task<IActionResult> UpdateVenda(Venda venda,
-            [FromServices] IVendaBusiness vendaBusiness)
-        {
 
-            try
-            {
-                var vendaSalva = await vendaBusiness.AtualizarVenda(venda);
-                return CustomResponse(vendaSalva);
-            }
-            catch (System.Exception)
-            {
-
-                return BadRequest();
-            }
-        }
-
-        /*[HttpPut]
-        [Route("Atualizar/{id}")]
-        public async Task<IActionResult> UpdateVenda(int id,
-            [FromServices] IVendaBusiness vendaBusiness)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
-            else
-            {
-                var vendaSalva = await vendaBusiness.AtualizarVenda(id);
-                return CustomResponse(vendaSalva);
-            }
-        }*/
+        
     }
 }

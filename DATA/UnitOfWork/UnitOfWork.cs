@@ -2,12 +2,12 @@
 
 namespace TeamGM.DATA.UnitOfWork
 {
-    public class DapperUnitOfWork : IDapperUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly DbSession _session;
-        DbSession IDapperUnitOfWork.Session => _session;
+        DbSession IUnitOfWork.Session => _session;
 
-        public DapperUnitOfWork(DbSession session)
+        public UnitOfWork(DbSession session)
         {
             _session = session;
         }

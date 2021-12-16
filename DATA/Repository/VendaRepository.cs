@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TeamGM.CROSSCUTTING.UnitOfWork;
 using TeamGM.DATA.Context;
 
 namespace Base.DATA.Repository 
@@ -13,10 +14,14 @@ namespace Base.DATA.Repository
     {
 
         private readonly DesafioAtosContext _context;
+        private readonly IItemVendaRepository _itemVendaRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public VendaRepository(DesafioAtosContext context) 
+        public VendaRepository(DesafioAtosContext context, IItemVendaRepository itemVendaRepository, IUnitOfWork unitOfWork) 
         {
             _context = context;
+            _itemVendaRepository = itemVendaRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<Venda> DeleteVendaAsync(Venda venda) {
@@ -89,25 +94,32 @@ namespace Base.DATA.Repository
         }
 
         public async Task<Venda> InsertVendaAsync(Venda venda) {
-            await _context.Venda.AddAsync(venda);
-            await _context.SaveChangesAsync();
-            return venda;
-        }
 
-        public async Task<Venda> UpdateVendaAsync(Venda venda) {
-            var vendaAtualizada = _context.Venda.FirstOrDefault(v => v.IdVenda == venda.IdVenda);
+            try
+            {
+                _unitOfWork.BeginTransaction();
 
-            if (vendaAtualizada == null)
-            {
-                return null;
-            }
-            else
-            {
-                _context.Update(venda);
+                await _context.Venda.AddAsync(venda);
                 await _context.SaveChangesAsync();
+
+
+                venda.ItemVendas.ToList().ForEach(c => c.IdVenda = venda.IdVenda);
+
+                await _itemVendaRepository.RegistrarItensVenda(venda.ItemVendas);
+                await _context.SaveChangesAsync();
+
+                _unitOfWork.Commit();
+
+
                 return venda;
             }
+            catch (Exception ex)
+            {
+                _unitOfWork.Rollback();
+                return null;
+            }
         }
+
 
         
     }

@@ -12,10 +12,7 @@ namespace Base.DOMAIN.Models
         public int QuantidadeEstoque { get; set; }
         public int QuantidadeVendas { get; set; }
         public string DescricaoProduto { get; set; }
-        public int IdFabricante { get; set; }
-        public int Avaliacao {  get; set; }
-        public byte[] FotoProduto { get; set; }
-        public CategoriaProduto CategoriaProduto { get; set; }
+        
         
     }
 }

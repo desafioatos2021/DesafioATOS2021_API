@@ -15,9 +15,9 @@ namespace Base.DATA.Repository
     public class ClienteRepository : IClienteRepository
     {
         private readonly DesafioAtosContext _context;
-        private readonly IDapperUnitOfWork _dapperUnitOfWork;
+        private readonly IUnitOfWork _dapperUnitOfWork;
 
-        public ClienteRepository(DesafioAtosContext context, IDapperUnitOfWork dapperUnitOfWork)
+        public ClienteRepository(DesafioAtosContext context, IUnitOfWork dapperUnitOfWork)
         {
             _context = context;
             _dapperUnitOfWork = dapperUnitOfWork;

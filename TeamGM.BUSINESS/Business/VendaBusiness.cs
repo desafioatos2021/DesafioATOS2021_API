@@ -12,20 +12,21 @@ namespace Base.BUSINESS.Business
     public class VendaBusiness : IVendaBusiness 
     {
         private readonly IVendaRepository _vendaRepository;
+        private readonly IItemVendaRepository _itemVendaRepository;
 
-        public VendaBusiness(IVendaRepository vendaRepository) 
+        public VendaBusiness(IVendaRepository vendaRepository, IItemVendaRepository itemVendaRepository)
         {
             _vendaRepository = vendaRepository;
+            _itemVendaRepository = itemVendaRepository;
         }
 
-        public Task<Venda> AdicionarVenda(Venda venda) 
+        public async Task<Venda> AdicionarVenda(Venda venda) 
         {
-            var vendaRetorno = _vendaRepository.InsertVendaAsync(venda);
+            var vendaRetorno = await _vendaRepository.InsertVendaAsync(venda);
+
             return vendaRetorno;
         }
 
-        public async Task<Venda> AtualizarVenda(Venda venda) =>
-            await _vendaRepository.UpdateVendaAsync(venda);
 
         public Task<Venda> ExcluirVenda(int id)
         {

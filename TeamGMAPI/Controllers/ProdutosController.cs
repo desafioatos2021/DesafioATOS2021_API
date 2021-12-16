@@ -46,12 +46,12 @@ namespace BaseAPI.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return CustomResponse(ModelState);
             }
             else
             {
                 var produtoCadastrado = await produtoBusiness.CadastrarProduto(produto);
-                return Ok(produto);
+                return Ok(produtoCadastrado);
             }
         }
 
