@@ -42,13 +42,15 @@ namespace TeamGMAPI
 
             services.AddDbContext<DesafioAtosContext>(options =>
             options.UseOracle(Configuration.GetConnectionString("DesafioAtosConnection")));
+            /*options.UseSqlServer(Configuration.GetConnectionString("SQL_SERVER_Connection"),
+            b => b.MigrationsAssembly("Base.DATA")));*/
 
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Desafio Atos 2021", Version = "v1" });
                 c.IncludeXmlComments(xmlPath, true);
             });
-
+            
             services.Configure<ApiBehaviorOptions>(options =>
             {
                 options.SuppressModelStateInvalidFilter = true;

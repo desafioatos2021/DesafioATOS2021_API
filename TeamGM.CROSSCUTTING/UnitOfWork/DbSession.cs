@@ -3,9 +3,13 @@ using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//using Microsoft.EntityFrameworkCore;
+using System.Web;
+using System.Configuration;
 
 namespace TeamGM.CROSSCUTTING.UnitOfWork
 {
@@ -21,6 +25,9 @@ namespace TeamGM.CROSSCUTTING.UnitOfWork
             _configuration = configuration;
             Connection = new OracleConnection(_configuration.GetConnectionString("DesafioAtosConnection"));
             Connection.Open();
+
+            //Connection = new SqlConnection(_configuration.GetConnectionString("SQL_SERVER_Connection"));
+            //Connection.Open();
         }
 
         public void Dispose() => Connection?.Dispose();
