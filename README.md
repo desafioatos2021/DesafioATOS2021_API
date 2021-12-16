@@ -41,5 +41,5 @@ Este projeto tem por finalidade demonstrar os conhecimentos adquiridos durante o
 - <a href="https://github.com/deyvisonjp">Deyvison J Paula </a>
 - Leonardo A Rocha
 - <a href="https://github.com/tacitobatista">Tácito Batista </a>
-- Thiago Q Morcaty
+- <a href="https://github.com/thiagomorcatty>Thiago Morcatty </a>
 - <a href="https://github.com/vitormartins1">Vitor Martins </a>
