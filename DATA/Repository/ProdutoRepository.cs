@@ -23,10 +23,7 @@ namespace Base.DATA.Repository
             _dapperUnitOfWork = dapperUnitOfWork;
         }
 
-        public Produto CadastrarProduto(Produto produto)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public async Task<Produto> DeleteProdutoAsync(int id)
         {

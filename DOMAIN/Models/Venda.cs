@@ -8,6 +8,6 @@ namespace Base.DOMAIN.Models
         public string numeroPedido { get; set; }
         public int IdCliente { get; set; }
         public virtual Cliente Cliente { get; set; }
-        public ICollection<ItemVenda> ItemVendas { get; set; }
+        public virtual ICollection<ItemVenda> ItemVendas { get; set; }
     }
 }
