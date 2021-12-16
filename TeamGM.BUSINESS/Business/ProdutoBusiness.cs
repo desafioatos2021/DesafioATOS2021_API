@@ -2,6 +2,7 @@
 using Base.DATA.Interfaces;
 using Base.DOMAIN.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Base.BUSINESS.Business
@@ -26,6 +27,18 @@ namespace Base.BUSINESS.Business
         {
             var produtoeExluido = _produtoRepository.DeleteProdutoAsync(id);
             return produtoeExluido;
+        }
+
+        public async Task<Produto> ListarProdutoId(int id)
+        {
+            var produtoConsultado = await _produtoRepository.GetProdutoIdAsyn(id);
+            return produtoConsultado;
+        }
+
+        public async Task<IEnumerable<Produto>> ListasProdutos()
+        {
+            var produtos = await _produtoRepository.GetProdutosAsync();
+            return produtos;
         }
     }
 }

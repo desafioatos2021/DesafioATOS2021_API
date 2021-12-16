@@ -12,6 +12,8 @@ namespace Base.BUSINESS.Interfaces
         Task<Cliente> AdicionarCliente(Cliente cliente);
         Task<Cliente> ExcluirCliente(int id);
         Task<Cliente> UpdateCliente(Cliente cliente);
+        Task<Cliente> ConsultarClientePorNome(string nome);
+        Task<Cliente> ConsultarClientePorId(int id);
         Task<IEnumerable<Cliente>> ListarClientes();
     }
 }

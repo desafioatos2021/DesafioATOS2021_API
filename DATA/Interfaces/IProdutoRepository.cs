@@ -12,5 +12,7 @@ namespace Base.DATA.Interfaces
         
         Task<Produto> DeleteProdutoAsync(int id);
         Task<Produto> InsertProdutoAsync(Produto produto);
+        Task<Produto> GetProdutoIdAsyn(int id);
+        Task<IEnumerable<Produto>> GetProdutosAsync();
     }
 }

@@ -40,14 +40,23 @@ namespace Base.DATA.Repository
             return clienteRemovido.Entity;
         }
 
-        public Task<Cliente> GetClienteIdAsync(int id)
+        public async Task<Cliente> GetClienteIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var clienteColsultado = _context.Cliente.Where(c => c.IdCliente == id).FirstOrDefault();
+            if (clienteColsultado == null) return null;
+            await _context.SaveChangesAsync();
+            return clienteColsultado;
         }
 
-        public Task<Cliente> GetClienteNomeAsync(string nome)
+        public async Task<Cliente> GetClienteNomeAsync(string nome)
         {
-            throw new NotImplementedException();
+            var clienteConsultado = _context.Cliente.Where(c => c.Nome == nome).FirstOrDefault();
+            if (clienteConsultado == null)
+            {
+                return null;
+            }
+            await _context.SaveChangesAsync();
+            return clienteConsultado;
         }
 
         public async Task<IEnumerable<Cliente>> GetClientesAsync()
