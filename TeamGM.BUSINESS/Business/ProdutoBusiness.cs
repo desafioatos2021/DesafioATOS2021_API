@@ -20,9 +20,9 @@ namespace Base.BUSINESS.Business
         public async Task<Produto> AtualizarProduto(Produto produto) =>
             await _produtoRepository.UpdateProdutoAsync(produto);
 
-        public Task<Produto> CadastrarProduto(Produto produto)
+        public async Task<Produto> CadastrarProduto(Produto produto)
         {
-            var produtoCadastrado = _produtoRepository.InsertProdutoAsync(produto);
+            var produtoCadastrado = await _produtoRepository.InsertProdutoAsync(produto);
             return produtoCadastrado;
         }
 

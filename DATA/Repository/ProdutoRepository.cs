@@ -15,9 +15,9 @@ namespace Base.DATA.Repository
     public class ProdutoRepository : IProdutoRepository
     {
         private readonly DesafioAtosContext _context;
-        private readonly IDapperUnitOfWork _dapperUnitOfWork;
+        private readonly IUnitOfWork _dapperUnitOfWork;
 
-        public ProdutoRepository(DesafioAtosContext context, IDapperUnitOfWork dapperUnitOfWork)
+        public ProdutoRepository(DesafioAtosContext context, IUnitOfWork dapperUnitOfWork)
         {
             _context = context;
             _dapperUnitOfWork = dapperUnitOfWork;
@@ -49,7 +49,6 @@ namespace Base.DATA.Repository
         {
             try
             {
-                _dapperUnitOfWork.BeginTransaction();
 
                 string sqlSearch = @$"SELECT * FROM ""Produtos""";
                 var produtos = SqlMapper.Query<Produto>(_dapperUnitOfWork.Session.Connection, sqlSearch);
@@ -63,9 +62,17 @@ namespace Base.DATA.Repository
 
         public async Task<Produto> InsertProdutoAsync(Produto produto)
         {
-            await _context.Produto.AddAsync(produto);
-            await _context.SaveChangesAsync();
-            return produto;
+            try
+            {
+                await _context.Produto.AddAsync(produto);
+                await _context.SaveChangesAsync();
+                return produto;
+            }
+            catch (Exception ex) 
+            {
+
+                throw;
+            }
         }
 
         public async Task<Produto> UpdateProdutoAsync(Produto produto)
@@ -75,11 +82,7 @@ namespace Base.DATA.Repository
             if (produtoAtualizado == null) return null;
 
             produtoAtualizado.NomeProduto = produto.NomeProduto;
-            produtoAtualizado.Avaliacao = produto.Avaliacao;
-            produtoAtualizado.CategoriaProduto = produto.CategoriaProduto;
             produtoAtualizado.DescricaoProduto = produto.DescricaoProduto;
-            produtoAtualizado.FotoProduto = produto.FotoProduto;
-            produtoAtualizado.IdFabricante = produto.IdFabricante;
             produtoAtualizado.QuantidadeVendas = produto.QuantidadeVendas;
             produtoAtualizado.QuantidadeEstoque = produto.QuantidadeEstoque;
             produtoAtualizado.ValorProduto = produto.ValorProduto;

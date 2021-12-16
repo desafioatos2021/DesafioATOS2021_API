@@ -2,7 +2,7 @@
 
 namespace TeamGM.CROSSCUTTING.UnitOfWork
 {
-    public interface IDapperUnitOfWork
+    public interface IUnitOfWork
     {
         public DbSession Session { get; }
 

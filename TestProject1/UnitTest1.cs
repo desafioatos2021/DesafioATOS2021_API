@@ -8,6 +8,13 @@ namespace TestProject1
         [TestMethod]
         public void TestMethod1()
         {
+
+            int idade = 20;
+
+            if (idade > 18)
+                Assert.IsTrue(true);
+            else
+                Assert.IsFalse(false);
         }
     }
 }

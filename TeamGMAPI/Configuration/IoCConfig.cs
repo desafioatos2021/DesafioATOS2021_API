@@ -30,9 +30,11 @@ namespace TeamGMAPI.Configuration
 
         private static IServiceCollection AddRepositoryService(this IServiceCollection service)
         {
-            service.AddScoped<IDapperUnitOfWork, DapperUnitOfWork>();
+            service.AddScoped<IUnitOfWork, UnitOfWork>();
             service.AddScoped<IClienteRepository, ClienteRepository>();
+            service.AddScoped<IProdutoRepository, ProdutoRepository>();
             service.AddScoped<IVendaRepository, VendaRepository>();
+            service.AddScoped<IItemVendaRepository, ItemVendaRepository>();
             service.AddScoped<DbSession>();
 
             return service;
@@ -52,6 +54,7 @@ namespace TeamGMAPI.Configuration
         {
             service.AddScoped<IClienteBusiness, ClienteBusiness>();
             service.AddScoped<IVendaBusiness, VendaBusiness> ();
+            service.AddScoped<IProdutoBusiness, ProdutoBusiness> ();
 
             return service;
         }
