@@ -33,7 +33,7 @@ Este projeto tem por finalidade demonstrar os conhecimentos adquiridos durante o
 
 ## Diagrama UML
 <p align="center">
-  <img src="diagrama.png" width="700" title="diagrama uml">
+  <img src="diagrama.png" title="diagrama uml">
 </p>
 
 ## Formação da Equipe "OsMiranha"
