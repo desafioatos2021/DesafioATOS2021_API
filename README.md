@@ -36,6 +36,14 @@ Este projeto tem por finalidade demonstrar os conhecimentos adquiridos durante o
   <img src="diagrama.png" title="diagrama uml">
 </p>
 
+## Domínios
+- Cliente
+- Venda
+- ItemVenda
+- Produto
+
+
+
 ## Formação da Equipe "OsMiranha"
 
 - <a href="https://github.com/deyvisonjp">Deyvison J Paula </a>
