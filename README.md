@@ -45,7 +45,7 @@ A WEB API utiliza MVC, e clean architecture.
 
 ## Banco de Dados
 
-A maioria das operações no banco de dados usa o entity framework mas algumas estão implemntadas em Dapper. (TODO: Explicar onde e os motivos).
+A maioria das operações no banco de dados usa o entity framework mas algumas estão implementadas em Dapper. (TODO: Explicar onde e os motivos).
 
 Utilizamos a mentalidade code-first, criando os Modelos no código C# e gerando o banco e as tabelas correspondentes com o Migration do entity framework.
 
