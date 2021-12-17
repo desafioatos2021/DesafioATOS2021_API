@@ -41,17 +41,15 @@ Este projeto tem por finalidade demonstrar os conhecimentos adquiridos durante o
 
 O projeto é uma ASP.NET WEB API REST que utiliza Json como recebimento e como resposta. Implementa os padrões MVC, e clean architecture.
 
-(TODO: explicar sobre as camadas de controller, business e repository)
+As rotas da API são gerenciadas pela camada Controller, que se comunica com a camada Business passando a requisição e os dados. A Business por sua vez faz tratamentos de regras de negócios e validações e passa os dados da requisição para a camada Repository que fica encarregada de fazer a comunicação com o banco de dados.
+
+Usamos uma pequena aplicação que implementa o design pattern Unity of Work como forma de persistência. Por exemplo, no metodo InserirVenda() para inserir a Venda com todos os ItemVenda juntos deve-se fazer uma transação e para poupar trabalho usamos o Unity of Work para abstrair as operações de banco. Podendo executar os metodos BeginTransaction(), Commit() e RollBack() em qualquer lugar do código.
 
 ## Banco de Dados
 
-A maioria das operações no banco de dados usa o entity framework mas algumas estão implementadas em Dapper. (TODO: Explicar onde e os motivos).
+A maioria das operações no banco de dados usa o entity framework mas algumas estão implementadas em Dapper.
 
 Utilizamos a mentalidade code-first, criando os Modelos no código C# e gerando o banco e as tabelas correspondentes com o Migration do entity framework.
-
-## Design Pattern
-
-Usamos uma pequena aplicação que implementa o design pattern Unity of Work como forma de persistência. Por exemplo, no metodo InserirVenda() para inserir a Venda com todos os ItemVenda juntos deve-se fazer uma transação e para poupar trabalho usamos o Unity of Work para abstrair as operações de banco. Podendo executar os metodos BeginTransaction(), Commit() e RollBack() em qualquer lugar do código.
 
 ## Domínios
 - Cliente
