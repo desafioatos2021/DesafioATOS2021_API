@@ -7,7 +7,7 @@ Este projeto tem por finalidade demonstrar os conhecimentos adquiridos durante o
 
 ## Tecnologias Utilizadas
 
-- .NET 6
+- .NET 5
 - C#
 - Oracle como banco de dados
 - Swagger
@@ -39,7 +39,7 @@ Este projeto tem por finalidade demonstrar os conhecimentos adquiridos durante o
 
 ## Estrutura
 
-A WEB API utiliza MVC, e clean architecture.
+O projeto é uma ASP.NET WEB API REST que utiliza Json como recebimento e como resposta. Implementa os padrões MVC, e clean architecture.
 
 (TODO: explicar sobre as camadas de controller, business e repository)
 
