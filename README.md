@@ -32,6 +32,7 @@ Este projeto tem por finalidade demonstrar os conhecimentos adquiridos durante o
 - Ao executar todas as funcionalidades devem ser executadas ou pelo Swagger ou pelo Postman, simulando uma integração entre os sistemas, sem erros sistêmicos, apenas com erros de validação de negócio será aceita
 
 ## Diagrama UML
+
 <p align="center">
   <img src="diagrama.png" title="diagrama uml">
 </p>
@@ -41,6 +42,16 @@ Este projeto tem por finalidade demonstrar os conhecimentos adquiridos durante o
 - Venda
 - ItemVenda
 - Produto
+
+## Estrutura
+
+A WEB API utiliza MVC, e clean architecture.
+
+A maioria das operações no banco de dados usa o entity framework mas algumas estão implemntadas em Dapper. (TODO: Explicar onde e os motivos).
+
+(TODO: explicar sobre as camadas de controller, business e repository)
+
+Usamos uma pequena aplicação que implementa o design pattern Unity of Work como forma de persistência. Por exemplo, no metodo InserirVenda() para inserir a Venda com todos os ItemVenda juntos deve-se fazer uma transação e para poupar trabalho usamos o Unity of Work para abstrair as operações de banco. Podendo executar os metodos BeginTransaction(), Commit() e RollBack() em qualquer lugar do código.
 
 O Cliente se relaciona com o domínio Venda de um para muitos, pois um cliente pode ter muitas vendas mas uma venda não pode ter muitos clientes. 
 
