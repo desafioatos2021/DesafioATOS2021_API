@@ -28,8 +28,8 @@ namespace BaseAPI.Controllers
         [Route("InsereCliente")]
         public async Task<IActionResult> InsereCliente(Cliente cliente,  [FromServices] IClienteBusiness clienteBusiness)
         {
-            if(!ModelState.IsValid)
-                return BadRequest();
+            if (!ModelState.IsValid)
+                return CustomResponse(ModelState);
             else
             {
                 var clienteSalvo = await clienteBusiness.AdicionarCliente(cliente);

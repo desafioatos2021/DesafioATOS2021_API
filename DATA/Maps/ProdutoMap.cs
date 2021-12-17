@@ -11,31 +11,31 @@ namespace Base.DATA.Maps
             builder.ToTable(nameof(Produto))
                 .HasKey(c => c.IdProduto);
 
-            builder.Property<int>("IdProduto")
-                .ValueGeneratedOnAdd()
-                .HasColumnType("int");
+            //builder.Property<int>("IdProduto")
+            //    .ValueGeneratedOnAdd()
+            //    .HasColumnType("int");
             
-            OraclePropertyBuilderExtensions.UseIdentityColumn(builder.Property<int>("IdProduto"), 1, 1);
+            //OraclePropertyBuilderExtensions.UseIdentityColumn(builder.Property<int>("IdProduto"), 1, 1);
 
-            builder.Property<string>("NomeProduto")
-                .IsRequired()
-                .HasColumnType("varchar(50)");
+            //builder.Property<string>("NomeProduto")
+            //    .IsRequired()
+            //    .HasColumnType("varchar(50)");
 
-            builder.Property<double>("ValorProduto")
-                .IsRequired()
-                .HasColumnType("number(10, 2)");
+            //builder.Property<double>("ValorProduto")
+            //    .IsRequired()
+            //    .HasColumnType("number(10, 2)");
 
-            builder.Property<int>("QuantidadeEstoque")
-                .IsRequired()
-                .HasColumnType("number");
+            //builder.Property<int>("QuantidadeEstoque")
+            //    .IsRequired()
+            //    .HasColumnType("number");
 
-            builder.Property<int>("QuantidadeVendas")
-                .IsRequired()
-                .HasColumnType("number");
+            //builder.Property<int>("QuantidadeVendas")
+            //    .IsRequired()
+            //    .HasColumnType("number");
 
-            builder.Property<string>("DescricaoProduto")
-                .IsRequired()
-                .HasColumnType("varchar(250)");
+            //builder.Property<string>("DescricaoProduto")
+            //    .IsRequired()
+            //    .HasColumnType("varchar(250)");
 
             
 

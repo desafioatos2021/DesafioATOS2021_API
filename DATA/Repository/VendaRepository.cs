@@ -42,6 +42,10 @@ namespace Base.DATA.Repository
                 return null;
             }
             var vendaRemovida = _context.Venda.Remove(vendaConsultada);
+
+            
+
+                
             await _context.SaveChangesAsync();
             return vendaRemovida.Entity;
         }
