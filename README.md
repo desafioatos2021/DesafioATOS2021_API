@@ -47,6 +47,8 @@ A WEB API utiliza MVC, e clean architecture.
 
 A maioria das operações no banco de dados usa o entity framework mas algumas estão implemntadas em Dapper. (TODO: Explicar onde e os motivos).
 
+Utilizamos a mentalidade code-first, criando os Modelos no código C# e gerando o banco e as tabelas correspondentes com o Migration do entity framework.
+
 ## Design Pattern
 
 Usamos uma pequena aplicação que implementa o design pattern Unity of Work como forma de persistência. Por exemplo, no metodo InserirVenda() para inserir a Venda com todos os ItemVenda juntos deve-se fazer uma transação e para poupar trabalho usamos o Unity of Work para abstrair as operações de banco. Podendo executar os metodos BeginTransaction(), Commit() e RollBack() em qualquer lugar do código.
